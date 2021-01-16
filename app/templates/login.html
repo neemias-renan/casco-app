@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Casco</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <!-- Falta Adicionar Favicon OFICIAL -->
+    <link rel="shortcut icon" href=""/>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='' )}}"/>
+  </head>
+  <body>
+    <section id = "login_page">
+      <div id="title_inicial">
+        <h1>Seja Bem Vindo!</h1>
+        <p id="subtitle">É sempre um prazer ter você conosco.</p>
+      </div>
+
+      <form action = "" method = "POST">
+        {{ form.csrf_token }}
+        <label class="form_title_blue">Email</label>
+        {{form.email(class = "email", placeholder="Digite seu email")}}
+        <label class="form_title_blue">Senha</label>
+        {{form.senha(class = "senha", placeholder="Digite sua senha")}}
+        <button type="submit">Entrar</button>
+      </form>        
+
+      <div id="options">
+       <a id="link1" href="">Esqueceu a senha?</a>
+       <a id="link2" href="/inscreverse">Inscrever-se</a>
+      </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src=''></script>
+  </body>
+</html> 
