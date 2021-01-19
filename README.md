@@ -25,8 +25,15 @@ $ python3 -m venv venv
 Para ativar o ambiente virtual:
 
 ```sh
-$ source venv/bin/activate       (Linux)
-$ source venv\Script\activate    (Windows)
+No Linux:
+
+$ source venv/bin/activate      
+
+No Windows:
+
+$ cd venv\Script\  
+  em seguida digite: 
+$ activate
 ```
 
 E finalmente, instale a lista de pacotes da aplicação:
