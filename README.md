@@ -1,6 +1,6 @@
 # Casco - Conservação e Proteção de Tartarugas Marinhas
 
-[resumo inicial]
+A plataforma (Casco) surgiu em 2020 com o objetivo de auxiliar biólogos ao monitoramento de tartarugas marinhas e disponibilizar os dados coletados para futuras pesquisas científicas. O projeto é mantido pelos estudantes Neemias Renan e Hortência Arliane, orientado pelo Prof. Me. Pedro Baesse e originalmente desenvolvido no IFRN.
 
 ## Como instalar:
 
