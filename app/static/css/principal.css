@@ -1,0 +1,62 @@
+@font-face{
+    font-family: "quick-b";
+    src: url("../fonts/Quicksand-Bold.ttf");
+}
+@font-face{
+    font-family: "asap-sb";
+    src: url("../fonts/Asap-SemiBold.ttf");
+}
+@font-face{
+    font-family: "asap-rg";
+    src: url("../fonts/Asap-Regular.ttf");
+}
+@font-face{
+    font-family: "asap-m";
+    src: url("../fonts/Asap-Medium.ttf");
+}
+.primeira_sessao,.segunda_sessao{
+    display: none;
+}
+
+body{
+    margin: 0;
+    background: #ffffff;
+    font-family: "quick-b";
+    text-align: center;
+    color: #35424a;
+}
+
+@media (min-width: 200px) and (max-width: 320px){
+   
+}
+
+@media (min-width:321px) and (max-width: 376px){
+    
+}
+
+@media (min-width:377px) and (max-width: 426px){
+   
+}
+
+@media (min-width:427px) and (max-width: 549px){
+   
+}
+
+@media (min-width:550px) and (max-width: 768px){
+    
+}
+
+@media (min-width:769px) and (max-width: 1025px){
+   
+}
+
+@media (min-width:1026px) and (max-width:1365px){
+    
+}
+
+@media (min-width:1366px){
+    
+
+}
+
+

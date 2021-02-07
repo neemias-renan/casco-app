@@ -19,6 +19,6 @@ class CadastroPesquisadorForm(FlaskForm):
     confirmarSenha = PasswordField("confirmarSenha", validators = [DataRequired()])
 
 class CadastroEquipeForm(FlaskForm):
-    nomedaEquipe = StringField("nomedaEquipe", validators = [DataRequired()])
+    nomedaequipe = StringField("nomedaequipe", validators = [DataRequired()])
     
 

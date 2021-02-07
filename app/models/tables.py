@@ -1,113 +1,100 @@
 from app import db
 
-class Lider(db.Model):
-    __tablename__ = "lideres"
+class User(db.Model):
+    __tablename__ = "users"
+
 
     id = db.Column(db.Integer, primary_key = True)
     nome = db.Column(db.String)
     email = db.Column(db.String, unique = True)
     senha = db.Column(db.String)
-    lider = db.relationship('Equipe', backref ="lideres", lazy = "dynamic")
+    tipo = db.Column(db.String(11))
+    
+    # lider / pesquisador
 
-    # @property
-    # def is_authenticated(self):
-    #     return True
-    # @property
-    # def is_active(self):
-    #     return True
-    # @property
-    # def is_anonymous(self):
-    #     return False
+    @property
+    def is_authenticated(self):
+        return True
+    @property
+    def is_active(self):
+        return True
+    @property
+    def is_anonymous(self):
+        return False
 
-    # def get_id(self):
-    #     return str(self.id)
+    def get_id(self):
+        return str(self.id)
 
-    def __init__(self, nome, email, senha):
+    def __init__(self, nome, email, senha,tipo):
         self.nome = nome
         self.email = email
         self.senha = senha
+        self.tipo = tipo
+
     
     def __repr__(self):
-        return "<Lider %r>" % self.nome
+        return "%r" % self.nome
 
-class Pesquisador(db.Model):
-    __tablename__ = "pesquisadores"
-
-    id = db.Column(db.Integer, primary_key = True)
-    nome = db.Column(db.String)
-    email = db.Column(db.String, unique = True)
-    senha = db.Column(db.String)
-      
-    pesquisador = db.relationship('Equipe',backref ="pesquisadores", lazy = "dynamic")
-
-    def __init__(self, nome, email, senha):
-        self.nome = nome
-        self.email = email
-        self.senha = senha
-    
-    def __repr__(self):
-        return "<Pesquisador %r>" % self.nome
 
 class Equipe(db.Model):
-    __tablename__ = "equipes"
-
+    __tablename__ = "equipe"
     id = db.Column(db.Integer, primary_key = True)
     nomedaequipe = db.Column(db.String, unique = True)
-    lider_id = db.Column(db.Integer, db.ForeignKey('lideres.id'),unique = True)
-    pesquisador_id = db.Column(db.Integer, db.ForeignKey('pesquisadores.id'),unique = True)
 
   
 
-    def __init__(self, nomedaEquipe, lider_id, pesquisador_id):
-        self.nomedaEquipe = nomedaEquipe
-        self.lider_id = lider_id
-        self.pesquisador_id = pesquisador_id 
+    def __init__(self, nomedaequipe):
+        self.nomedaequipe = nomedaequipe
 
      
     def __repr__(self):
-        return "<Equipe %r>" % self.nomedaEquipe
+        return "Equipe %r" % self.nomedaequipe
 
 class Tartaruga(db.Model):
     __tablename__ = "tartarugas"
 
     id = db.Column(db.Integer, primary_key = True)
-    anilha = db.Column(db.String, unique = True)
+    anilha = db.Column(db.String)
+    informacoes = db.Column(db.Text)
     especie = db.Column(db.String)
     tipo_de_registro = db.Column(db.String)
+    monitoramento = db.Column(db.String(3))
     sexo = db.Column(db.String(2))
     ccc = db.Column(db.String(5))
     lcc = db.Column(db.String(5))
-    informacoes = db.Column(db.Text)
     municipio = db.Column(db.String)
     praia = db.Column(db.String)
     latitude = db.Column(db.String)
     longitude = db.Column(db.String)
     data = db.Column(db.String)
     hora = db.Column(db.String)
-    monitoramento = db.Column(db.String(3))
-    equipe_id = db.Column(db.Integer, db.ForeignKey('equipes.id'),unique = True)
 
-    equipe = db.relationship('Equipe',foreign_keys = equipe_id)
+    datadoalerta = db.Column(db.String)
+    
+    # equipe_id = db.Column(db.Integer, db.ForeignKey('equipes.id'),unique = True)
 
-    def __init__(self, anilha,especie,tipo_de_registro,sexo,ccc,lcc,informacoes,municipio,praia,latitude,longitude,data,hora, monitoramento, equipe_id):
+    # equipe = db.relationship('Equipe',foreign_keys = equipe_id)
+
+    def __init__(self, anilha,informacoes,especie,tipo_de_registro, monitoramento, sexo,ccc,lcc,municipio,praia,latitude,longitude,data,hora,datadoalerta):
         self.anilha = anilha
+        self.informacoes = informacoes
         self.especie = especie
         self.tipo_de_registro = tipo_de_registro
+        self.monitoramento = monitoramento
         self.sexo = sexo
         self.ccc = ccc
         self.lcc = lcc
-        self.informacoes = informacoes
         self.municipio = municipio
         self.praia = praia
         self.latitude = latitude
         self.longitude = longitude
         self.data = data
         self.hora = hora
-        self.monitoramento = monitoramento
-        self.equipe_id = equipe_id
+        self.datadoalerta = datadoalerta
+        # self.equipe_id = equipe_id
     
     def __repr__(self):
-        return "<Tartaruga %r>" % self.anilha
+        return "Anilha = '%s', Informações de Registro = '%s', Espécie = '%s', Tipo de Registro = '%s', Sexo = '%s', CCC = '%s', LCC = '%s', Município = '%s', Praia = '%s', Latitude = '%s', Longitude = '%s', Data do registro = '%s', Hora do registro = '%s'" % (self.anilha, self.informacoes, self.especie, self.tipo_de_registro, self.sexo, self.ccc, self.lcc, self.municipio, self.praia, self.latitude, self.longitude, self.data, self.hora)
 
 
 class Nova_Desova(db.Model):
@@ -121,11 +108,9 @@ class Nova_Desova(db.Model):
     data = db.Column(db.String)
     hora = db.Column(db.String)
     monitoramento = db.Column(db.String(3))
-    equipe_id = db.Column(db.Integer, db.ForeignKey('equipes.id'),unique = True)
+    datadoalerta = db.Column(db.String)
 
-    equipe = db.relationship('Equipe',foreign_keys = equipe_id)
-
-    def __init__(self,municipio,praia,latitude,longitude,data,hora, monitoramento, equipe_id):
+    def __init__(self,municipio,praia,latitude,longitude,data,hora, monitoramento,datadoalerta):
         self.municipio = municipio
         self.praia = praia
         self.latitude = latitude
@@ -133,7 +118,7 @@ class Nova_Desova(db.Model):
         self.data = data
         self.hora = hora
         self.monitoramento = monitoramento
-        self.equipe_id = equipe_id
+        self.datadoalerta = datadoalerta
     
     def __repr__(self):
-        return "<Nova desova %r>" % self.id 
+        return "Nova desova %r" % self.id 

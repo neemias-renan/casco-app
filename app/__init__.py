@@ -13,8 +13,9 @@ migrate = Migrate(app , db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
-# login_manager = LoginManager()
-# login_manager.init_app(app)
+lm = LoginManager()
+lm.init_app(app)
+
 
 
 from app.models import tables, forms

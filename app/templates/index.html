@@ -7,13 +7,13 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
         <!-- Falta Adicionar Favicon OFICIAL -->
     <link rel="shortcut icon" href=""/>
-    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='' )}}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/index.css' )}}"/>
     
   </head>
   <body>
     <section id="initial_page">
       <h1 id="title">Casco</h1>
-      <image id="img_Tartaruga" src="{{ url_for('static',filename='tartaruga.png' )}}"><br/>
+      <image id="img_Tartaruga" src="{{ url_for('static',filename='images/tartaruga.png' )}}"><br/>
       <a href="/login">
         <button id="btn_iniciar">Iniciar</button>
       </a>

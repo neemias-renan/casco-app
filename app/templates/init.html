@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Casco</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/principal.css' )}}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="../static/css/principal.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <section id = "principal">
+        <p id = "titulo">Olá,<b>{{current_user.nome}}</b></p>
+        <button id="btn_registerTartaruga">+</button>
+        <a href="/configuracoes"><button id="btn_conf">Configurações</button></a>
+    </section>
+
+    
+    <nav id = "menu">
+        <ul>
+            <li>Início</li>
+            <li><a href="/historico">Histórico</a></li>
+            <li>Equipe</li>
+            <li><a href="/logout">Sair</a></li>
+        </ul>
+    </nav>
+
+    
+    <section id="registrarTartaruga">
+        <form action="" method="POST">
+            <div class="primeira_sessao">
+                <input type="reset" id="btn_voltar1" value="voltar">
+                <!-- titulos -->
+                <div>
+                    <h3>Gerenciar Tartarugas</h3><br/>
+                    <h1>Dados das Tartarugas</h1><br/>
+                </div>
+                <!-- Número de anilha -->
+                <div>
+                    <label>Número de Identificação</label><br>
+                    <input type="text" name="numerodaanilha" placeholder="Anilha"><br>
+                </div>
+                <!-- detalhamento -->
+                <div>
+                    <label id = "detalhar">Detalhamento</label><br>
+                        <div id = "detalhes">
+                            <input type="radio" name="informacoes" value="houve manutencao" checked>
+                            <label for="houvemanutencao"> Houve Manutenção.</label><br>
+                            <input type="radio" name="informacoes" value="nao havia anilha">
+                            <label for="naohaviaanilha"> Não havia Anilha.</label><br>
+                        </div>
+                </div>
+                
+                <!-- espécie -->
+                <div>
+                    <label>Espécie da Tartaruga</label><br>
+                    <select name="especie">
+                        <option value="Eretmochelys imbricata">EI – Eretmochelys imbricata</option>
+                        <option value="Chelonia mydas">; CM – Chelonia mydas</option>
+                        <option value="Caretta caretta">CC – Caretta caretta</option>
+                        <option value="Lepidochelys olivacea">LO - Lepidochelys olivacea</option>
+                        <option value="Dermocheys Coriacea">DC – Dermocheys Coriacea</option>
+                    </select><br>
+                </div>
+                <!-- tipo de registro -->
+                <div>
+                    <label>Tipo de Registro</label><br>
+                    <select name="tipodeRegistro">
+                        <option value="com desova">Com Desova</option>
+                        <option value="sem desova">Sem Desova</option>
+                        <option value="meia lua">Meia Lua</option>
+                        <option value="não identificado">Não Identificado</option>
+                    </select><br>
+                </div>
+                <!-- Ativar monitoramento -->
+                <div>
+                    <input type="checkbox" name="monitoramento" value="sim" id = "checkboxMonitoria" checked>
+                    <label for="ativar">Ativar o monitoramento</label><br>
+                    <p id = "informacoesMonitoria">Ao ativar essa opção sua equipe receberá um aviso sobre o provável período de nascimento.</p>
+                </div>
+                
+                <!-- sexo -->
+                <div>
+                    <label>Sexo</label><br>
+                    <select name="sexo">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                    </select><br>
+                </div>
+
+                <!-- CCC -->
+                <div>
+                    <label>CCC</label><br>
+                    <input type="text" name="ccc" placeholder="Comprimento"><br>
+                </div>
+                <div>
+                    <label>LCC</label><br>
+                    <input type="text" name="lcc" placeholder="Largura"><br>
+                </div>
+                
+                <input type="button" id="btn_continuar" value="Continuar"><br>
+
+                <a href="/novadesova">Registrar Nova Desova</a><br>
+            </div>
+
+                <!-- segunda sessão -->
+
+            <div class="segunda_sessao">
+                <input type="button" id="btn_voltar2" value="voltar">
+                <!-- titulos -->
+                <div>
+                    <h3>gerenciar Tartarugas</p><br/>
+                    <h1>Dados da Localização</h1><br/>
+                </div>
+                <!-- Municipios -->
+                <div>
+                    <label>Município</label>
+                    <select name="municipio">
+                        <option value="Maxaranguape">Maxaranguape</option>
+                        <option value="Ceará Mirim">Ceará Mirim</option>
+                    </select><br>
+                </div>
+                <!-- Praias -->
+                <div>
+                    <label>Praia</label>
+                    <select name="praia">
+                        <option value="Jacumã">Jacumã - JCM</option>
+                        <option value="Porto-Mirim">Porto-Mirim - PMR</option>
+                        <option value="Muriú">Muriú - MRU</option>
+                        <option value="Barra de Maxaranguape">Barra de Maxaranguape - BMX</option>
+                        <option value="Cabo de São Roque">Cabo de São Roque - CSR</option>
+                        <option value="Caraúbas">Caraúbas - CRB</option>
+                        <option value="Maxaranguape">Maracajaú – MRJ</option>
+                    </select><br>
+                </div>
+                <!-- atribuir Coordenadas -->
+                <div>
+                    <label id = "atribuirCoordenadas">Atribuir Coordenadas</label><br>
+                    <div id = "checkboxCoordenadas">
+                        <input type="checkbox" name="coordenadas" value="coordenadas">
+                        <label for="houvemanutencao"> Atribuir automaticamente.</label><br>
+                    </div>
+                    
+                </div>
+                <!-- Latitude -->
+                <div>
+                    <label>Latitude</label>
+                    <input type="text" name="latitude" placeholder="Latitude"><br>
+                </div>
+                <!-- Longitude -->
+                <div>
+                    <label>Longitude</label>
+                    <input type="text" name="longitude" placeholder="Longitude"><br>
+                </div>
+                <!-- Data -->
+                <div>
+                    <label>Data</label>
+                    <input type="date" name="data" placeholder="Data"><br>
+                </div>
+                <!-- Hora -->
+                <div>
+                    <label>Hora</label>
+                    <input type="text" name="hora" placeholder="Hora"><br>
+                </div>
+
+                <input type="submit" value="Concluir">
+            </div>
+        </form>
+
+    </section>
+
+    <h1>Novas Notificações</h1>
+    <ul id="view">
+        {% for a in a %}
+            <li>
+                <p>Período de Nascimento</p>
+                {{a.data}} - {{a.praia}}
+                <input type="button" value="ver">
+                <div>
+                    <h1>Que empolgante!<br>Em breve acontecerá uma nova desova.</h1>
+                    <p>Localização:</p>
+                    {{a.praia}}
+                    <p>Espécie</p>
+                    {{a.especie}}       
+                    <input type="button" value="Ver no Mapa">
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    
+
+    <script src="{{ url_for('static',filename='js/principal.js' )}}"></script>
+    <!-- <script src='../static/js/principal.js'></script> -->
+</body>
+</html>

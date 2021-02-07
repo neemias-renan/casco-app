@@ -6,8 +6,8 @@
     <title>Casco</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
         <!-- Falta Adicionar Favicon OFICIAL -->
-    <link rel="shortcut icon" href=""/>
-    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='' )}}"/>
+    <!-- <link rel="shortcut icon" href=""/> -->
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='' )}}"/> -->
   </head>
   <body>
     <section id = "register_page">
@@ -21,7 +21,7 @@
           {{form.nome(class = "nome", placeholder="Digite seu email")}}
           <label for="email">Email</label>
           {{form.email(class = "email", placeholder="Digite seu email")}}
-          <label for="codigodeacesso">Código de Acesso</label>
+          <!-- <label for="codigodeacesso">Código de Acesso</label> -->
           
           <label for="senha">Senha</label>
           {{form.senha(class = "senha", placeholder="Digite sua senha")}}
@@ -31,7 +31,7 @@
         </form>
         
         <div id="options">
-            <a id="link1" href="/inscrevase">Formar Equipe</a>
+            <a id="link1" href="/registerl">Formar Equipe</a>
             <a id="link2" href="/">Voltar</a>
         </div>
     </section>

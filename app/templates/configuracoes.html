@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Casco</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <!-- <script src='main.js'></script> -->
+</head>
+<body>
+    <div>
+        <h1>{{current_user.nome}}</h1>
+        <p>Alterar Dados</p>
+    </div>
+    
+
+    <form action="" method="POST">
+        <div>
+            <label for="nome">Nome</label><br>
+            <input type="text" name="novoNome" id="nome" placeholder="{{current_user.nome}}" value="{{current_user.nome}}"><br>
+        </div>
+
+        <div>
+            <label for="email">Email</label><br>
+            <input type="email" name="novoEmail" id="email" placeholder="{{current_user.email}}" value="{{current_user.email}}"><br>
+        </div>
+
+        <div>
+            <label for="senha">Senha Atual</label><br>
+            <input type="password" name="senhaAtual" id="senhaAtual" autocomplete="new-password"><br>
+        </div>
+
+        <div>
+            <label for="senhaNova">Nova Senha</label><br>
+            <input type="password" name="senhaNova" id="senhaNova" autocomplete="new-password"><br>
+        </div>
+
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="/principal"><input type="button" value="voltar"></a>
+</body>
+</html>
