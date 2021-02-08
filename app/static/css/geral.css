@@ -1,0 +1,157 @@
+@font-face{
+    font-family: "quick-bold";
+    src: url("../fonts/Quicksand-Bold.ttf");
+}
+@font-face{
+    font-family: "asap-semibold";
+    src: url("../fonts/Asap-SemiBold.ttf");
+}
+@font-face{
+    font-family: "asap-regular";
+    src: url("../fonts/Asap-Regular.ttf");
+}
+@font-face{
+    font-family: "asap-medium";
+    src: url("../fonts/Asap-Medium.ttf");
+}
+@font-face{
+    font-family: "asap-bold";
+    src: url("../fonts/Asap-Bold.ttf");
+}
+
+    /* --Fontes do projeto: */
+    /*      quick-bold      */
+    /*      asap-semibold   */
+    /*      asap-regular    */
+    /*      asap-medium     */
+     /*      asap-bold     */
+
+body{
+    font-family: asap-regular;
+    color:#35424a;
+    margin: 0;
+}
+
+.btn_green{
+    background: #54ac7e;
+    border: none;
+    border-radius: 6px 6px 6px 6px;
+
+    color: #ffffff;
+    font-family: "asap-semibold";
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+
+    width: 280px;
+    height: 48px;
+    cursor: pointer;
+}
+.btn_blue{
+    background: #5f6af8;
+    border: none;
+    border-radius: 6px 6px 6px 6px;
+
+    color: #ffffff;
+    font-family: "asap-semibold";
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+
+    width: 280px;
+    height: 48px;
+    cursor: pointer;
+}
+
+.link{
+    font-family: asap-medium;
+    text-decoration: none;
+    color:#989eb1;
+}
+
+.label_green{
+    font-family: asap-semibold;
+    font-size: 1em;
+    color: #54ac7e;
+}
+.label_blue{
+    font-family: asap-semibold;
+    font-size: 1em;
+    color:#5f6af8;
+}
+
+.formInput{
+    border: none;
+    border-bottom-style: solid;
+    border-width: 1.6px;
+    border-color: #ebebeb;
+    font-family: 'asap-medium';
+    color: #35424a;
+    font-size: 1.1em;
+    width: 38%;
+    padding-bottom:0.5em
+}
+
+.formInput:focus{
+    outline:none;
+}
+
+.btn_back{
+    width: 5%;
+}
+
+
+/* Parte do Histórico */
+.li{display: block;
+    margin-bottom: 1em}
+
+.div{
+    background-color: #5f6af8;
+    color: white;
+    border-radius: 6px 6px 6px;
+    height: 10em;
+    width: 38em;
+}
+
+.datahora{
+    position: fixed;
+    margin: 0;
+    margin-left: 2%;
+    padding-top: 0.5em;
+}
+
+.localizacao{
+    position: fixed;
+    margin: 0;
+    margin-left: 25.3em;
+    padding-top: 0.5em;
+    text-align: end;
+}
+.especie{
+    margin-left: 2%;
+    font-family: 'asap-bold';
+    font-size: 2em;
+    position: fixed;
+}
+.informacoes{
+    position: fixed;
+    margin-left: 2%;
+    margin-top: 3.9em;
+}
+.tipoderegistro{
+    position: fixed;
+    margin-left: 2%;
+    margin-top: 8.4em;
+}
+
+.div_dados{
+    position: fixed;
+    margin-left: 30em;
+    margin-top: 5em;
+    text-align: end;
+}
+.p_dados{
+    padding: 0;
+    margin: 0;
+    margin-top: 1%;
+}

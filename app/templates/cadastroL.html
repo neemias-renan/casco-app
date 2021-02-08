@@ -6,8 +6,9 @@
       <title>Casco</title>
       <meta name='viewport' content='width=device-width, initial-scale=1'>
           <!-- Falta Adicionar Favicon OFICIAL -->
-      <link rel="shortcut icon" href=""/>
-      <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='' )}}"/>
+      <!-- <link rel="shortcut icon" href=""/> -->
+      <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/> -->
+      <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
     </head>
     <body>
       <section id = "register_page">
@@ -18,21 +19,21 @@
           <form action="" method = "POST">
               {{ form.csrf_token }}
               {{ equipeform.csrf_token }}
-              <label for="nome">Nome</label>
-              {{form.nome(class = "nome", placeholder="Digite seu email")}}
-              <label for="email">Email</label>
-              {{form.email(class = "email", placeholder="Digite seu email")}}
-              <label for="nomedaequipe">Nome da Equipe</label>
-              {{equipeform.nomedaequipe(class = "nEquipe", placeholder="Digite o nome da equipe")}}
-              <label for="senha">Senha</label>
-              {{form.senha(class = "senha", placeholder="Digite sua senha")}}
-              <label for="confirmarSenha">Confirmar Senha</label>
-              {{form.confirmarSenha(class = "confirmarSenha", placeholder="Digite sua senha")}}
-              <input type="submit" value="Continue">
+              <label class = "label_blue" for="nome">Nome</label><br>
+              {{form.nome(class = "formInput", placeholder="Digite seu email")}}<br>
+              <label class = "label_blue" for="email">Email</label><br>
+              {{form.email(class = "formInput", placeholder="Digite seu email")}}<br>
+              <label class = "label_blue" for="nomedaequipe">Nome da Equipe</label><br>
+              {{equipeform.nomedaequipe(class = "formInput", placeholder="Digite o nome da equipe")}}<br>
+              <label class = "label_blue" for="senha">Senha</label><br>
+              {{form.senha(class = "formInput", placeholder="Digite sua senha")}}<br>
+              <label class = "label_blue"for="confirmarSenha">Confirmar Senha</label><br>
+              {{form.confirmarSenha(class = "formInput", placeholder="Digite sua senha")}}<br>
+              <input class="btn_blue" type="submit" value="Continue"><br>
           </form>
           
           <div id="options">
-              <a id="link1" href="/">Voltar ao Início</a>
+              <a class="link" href="/">Voltar ao Início</a>
           </div>
       </section>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

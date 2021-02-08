@@ -7,8 +7,8 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
         <!-- Falta Adicionar Favicon OFICIAL -->
     <!-- <link rel="shortcut icon" href=""/> -->
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/login.css"/> -->
-    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/' )}}"/>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/> -->
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
   </head>
   <body>
     <section id = "login_page">
@@ -20,21 +20,23 @@
       <form action = "" method = "POST">
         {{ form.csrf_token }}
         <div>
-          <label class="form_title_blue">Email</label><br>
-          {{form.email(class = "email", placeholder="Digite seu email")}}<br>
+          <label class="label_blue">Email</label><br>
+          {{form.email(class = "formInput", placeholder="Digite seu email")}}
+          <br>
         </div>
 
         <div>
-          <label class="form_title_blue">Senha</label><br>  
-          {{form.senha(class = "senha", placeholder="Digite sua senha")}}<br>
+          <label class="label_blue">Senha</label><br>  
+          {{form.senha(class = "formInput", placeholder="Digite sua senha")}}
+          <br>
         </div>
        
-        <button type="submit">Entrar</button>
+        <button class="btn_blue" type="submit">Entrar</button>
       </form>        
 
       <div id="options">
-       <a id="link1" href="/recuperarsenha">Esqueceu a senha?</a>
-       <a id="link2" href="/registerp">Inscrever-se</a>
+       <a class="link" href="/recuperarsenha">Esqueceu a senha?</a>
+       <a class="link" href="/registerp">Inscrever-se</a>
       </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

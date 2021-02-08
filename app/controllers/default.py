@@ -95,7 +95,7 @@ def principal():
     diaatual = str("%r/%r/%r" %(dia3,mes3,ano3))
     print(diaatual)
     
-    alertas = Tartaruga.query.filter_by(datadoalerta = diaatual).all()
+    alertas = Tartaruga.query.filter_by(datadoalerta <= diaatual).all()
     a = alertas
     
     return render_template("init.html",a = a)

@@ -5,39 +5,41 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Casco</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
-    <!-- <script src='main.js'></script> -->
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/> -->
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
 </head>
 <body>
+
+    <a href="/principal"><img class="btn_back" src="../static/images/menu_icon_blue.png" alt="ir para o menu"></a>
+
     <div>
-        <h1>{{current_user.nome}}</h1>
+        <h2>{{current_user.nome}}</h2>
         <p>Alterar Dados</p>
     </div>
     
 
     <form action="" method="POST">
         <div>
-            <label for="nome">Nome</label><br>
-            <input type="text" name="novoNome" id="nome" placeholder="{{current_user.nome}}" value="{{current_user.nome}}"><br>
+            <label class="label_blue" for="nome">Nome</label><br>
+            <input class="formInput" type="text" name="novoNome" id="nome" placeholder="{{current_user.nome}}" value="{{current_user.nome}}"><br>
         </div>
 
         <div>
-            <label for="email">Email</label><br>
-            <input type="email" name="novoEmail" id="email" placeholder="{{current_user.email}}" value="{{current_user.email}}"><br>
+            <label class="label_blue" for="email">Email</label><br>
+            <input class="formInput" type="email" name="novoEmail" id="email" placeholder="{{current_user.email}}" value="{{current_user.email}}"><br>
         </div>
 
         <div>
-            <label for="senha">Senha Atual</label><br>
-            <input type="password" name="senhaAtual" id="senhaAtual" autocomplete="new-password"><br>
+            <label class="label_blue" for="senha">Senha Atual</label><br>
+            <input class="formInput" type="password" name="senhaAtual" id="senhaAtual" autocomplete="new-password"><br>
         </div>
 
         <div>
-            <label for="senhaNova">Nova Senha</label><br>
-            <input type="password" name="senhaNova" id="senhaNova" autocomplete="new-password"><br>
+            <label class="label_blue" for="senhaNova">Nova Senha</label><br>
+            <input class="formInput" type="password" name="senhaNova" id="senhaNova" autocomplete="new-password"><br>
         </div>
 
-        <button type="submit">Salvar</button>
+        <button class="btn_blue"type="submit">Salvar</button>
     </form>
-    <a href="/principal"><input type="button" value="voltar"></a>
 </body>
 </html>

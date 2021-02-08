@@ -5,23 +5,38 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Casco</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/> -->
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
 </head>
 <body>
+    <a href="/principal"><img class="btn_back" src="../static/images/menu_icon_blue.png" alt="ir para o menu"></a>
+
     <h1>Histórico</h1>
+
     <form action="" method="POST">
-        <label for="identificador">Número de Identificação</label>
-        <input type="text" name="identificador" placeholder="Digite a anilha da tartaruga">
-        <input type="submit" value="Pesquisar">       
+        <label class="label_blue" for="identificador">Número de Identificação</label><br>
+        <input class="formInput" type="text" name="identificador" placeholder="Digite a anilha da tartaruga"><br>
+        <input class="btn_blue" type="submit" value="Pesquisar">
     </form>
     
     <ul id="view">
         {% for t in t %}
-           <li>{{t}}</li>
+            <li class="li">
+                <div class="div">
+                    <p class="datahora">{{t.data}} - {{t.hora}}</p>
+                    <p class="localizacao">Em {{t.praia}} - {{t.municipio}}</p>
+                    <p class="especie">{{t.especie}}</p>
+                    <p class="informacoes">{{t.informacoes}}</p>
+                    <p class="tipoderegistro">Tipo do Registro: {{t.tipo_de_registro}}</p>
+                    <div class="div_dados">
+                        <p class="p_dados">Sexo: {{t.sexo}}</p>
+                        <p class="p_dados">CCC: {{t.ccc}}</p>
+                        <p class="p_dados">LCC: {{t.lcc}}</p>
+                    </div>
+                </div>
+            </li>
         {% endfor %}
     </ul>
-
-    <a href="/principal"><button>voltar</button></a>
 </body>
 </html>
