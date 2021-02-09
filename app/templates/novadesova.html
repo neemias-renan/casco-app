@@ -3,18 +3,19 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Casco</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/principal.css' )}}"/>
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/principal.css"/> -->
+
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/> -->
+
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <section class="cadastrar">
+    <section class="sessao">
         
-        <a href="/principal">
-            <input type="button" id="btn_voltar" value="voltar">
-        </a> 
+        <a href="/principal"><img class="btn_back" src="../static/images/back_icon_white.png" alt="ir para o menu"></a>
+
         <!-- titulos -->
         <div>
             <h3>Gerenciar Nova Desova</h3><br/>
@@ -25,16 +26,16 @@
         <form action="" method="POST">
              <!-- Municipios -->
             <div>                
-                <label>Município</label>
-                <select name="municipio">
+                <label>Município</label><br>
+                <select name="municipio"  class="inputDadosTartaruga" >
                     <option value="Maxaranguape">Maxaranguape</option>
                     <option value="Ceará Mirim">Ceará Mirim</option>
                 </select><br>
             </div>
             <!-- Praias -->
             <div>
-                <label>Praia</label>
-                <select name="praia">
+                <label>Praia</label><br>
+                <select name="praia"  class="inputDadosTartaruga" >
                     <option value="Jacumã">Jacumã - JCM</option>
                     <option value="Porto-Mirim">Porto-Mirim - PMR</option>
                     <option value="Muriú">Muriú - MRU</option>
@@ -55,32 +56,28 @@
             </div>
             <!-- Latitude -->
             <div>
-                <label>Latitude</label>
-                <input type="text" name="latitude" placeholder="Latitude"><br>
+                <label>Latitude</label><br>
+                <input type="text" name="latitude" placeholder="Latitude"  class="inputDadosTartaruga" ><br>
             </div>
             <!-- Longitude -->
             <div>
-                <label>Longitude</label>
-                <input type="text" name="longitude" placeholder="Longitude"><br>
+                <label>Longitude</label><br>
+                <input type="text" name="longitude" placeholder="Longitude"  class="inputDadosTartaruga" ><br>
             </div>
-            <!-- Data -->
-            <div>
-                <label>Data</label>
-                <input type="text" name="data" placeholder="Data"><br>
-            </div>
-            <!-- Hora -->
-            <div>
-                <label>Hora</label>
-                <input type="text" name="hora" placeholder="Hora"><br>
+            <!-- Data e Hora -->
+            <div class="data_hora">
+                <div id="ccc">
+                    <label>Data</label><br>
+                    <input type="date" class="inputDadosTartaruga2" id="inputData" name="data"><br>
+                </div>
+
+                <div id="ccl">
+                    <label>Hora</label><br>
+                    <input type="time"  id="inputHora" class="inputDadosTartaruga2" name="hora"><br>
+                </div>
             </div>
 
-            <div>
-                <input type="checkbox" name="monitoramento" value="sim" id = "checkboxMonitoria" checked>
-                <label for="ativar">Ativar o monitoramento</label><br>
-                <p id = "informacoesMonitoria">Ao ativar essa opção sua equipe receberá um aviso sobre o provável período de nascimento.</p>
-            </div>
-
-            <input type="submit" value="Concluir">
+            <input class="btn_green" type="submit" value="Concluir">
         </form>
     </section>
     <script src="{{ url_for('static',filename='js/principal.js' )}}"></script>

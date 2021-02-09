@@ -5,34 +5,85 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Casco</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/principal.css' )}}"/>
-    <link rel='stylesheet' type='text/css' media='screen' href="../static/css/principal.css"/>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <section id = "principal">
-        <p id = "titulo">Olá,<b>{{current_user.nome}}</b></p>
-        <button id="btn_registerTartaruga">+</button>
-        <a href="/configuracoes"><button id="btn_conf">Configurações</button></a>
-    </section>
-
-    
-    <nav id = "menu">
+    <nav class = "menu">
+        <a class="btn" id="btn_fecharmenu"><img class="btn_fechar_menu" src="../static/images/close_icon_green.png" alt="Fechar Menu"></a>
         <ul>
-            <li>Início</li>
-            <li><a href="/historico">Histórico</a></li>
-            <li>Equipe</li>
-            <li><a href="/logout">Sair</a></li>
+            <a href="/principal"><li class="li_menu">Início</li></a>
+            <a href="/historico"><li class="li_menu">Histórico</li></a>
+            <a href="/configuracoes"><li class="li_menu">Configurar Perfil</li></a>
+            <a href="/logout"> <li class="li_menu">Sair</li></a>
+            
         </ul>
     </nav>
 
-    
-    <section id="registrarTartaruga">
-        <form action="" method="POST">
-            <div class="primeira_sessao">
-                <input type="reset" id="btn_voltar1" value="voltar">
+    <section id = "tela_principal">
+       <div class="div_titulo">
+            <a class="btn" id="btn_abrirmenu"><img class="btn_abrir_menu" src="../static/images/menu_icon_white.png" alt="Abrir menu"></a>
+            <p class = "p_titulo">Olá,<b>{{current_user.nome}}</b></p>
+        </div>
+       
+        <div class="notificacoes">
+            <h1>Novas Notificações</h1>
+            <ul id="view">
+                {% for a in a %}
+                    <li class="li">
+                        <div class="div_aviso">
+                            <h3 class="h3">Período de Nascimento</h3>
+                            <p class="p">{{a.data}} - {{a.praia}}<p>
+                            <input class="btn_ver" type="button" value="ver">
+                        </div>
+                        
+                        <div class="div_detalhes">
+                            <h1>Que empolgante!<br>Em breve acontecerá uma nova desova.</h1>
+                            <p>Localização:</p>
+                            {{a.praia}}
+                            <p>Espécie</p>
+                            {{a.especie}}       
+                            <a href="https://www.google.com.br/maps/search/{{a.latitude}},{{a.longitude}}"><input type="button" value="Ver no Mapa"></a>
+                        </div>
+                    </li>
+                {% endfor %}
+
+                {% for d in d %}
+                    <li class="li">
+                        <div class="div_aviso">
+                            <h3 class="h3">Período de Nascimento</h3>
+                            <p class="p">{{d.data}} - {{d.praia}}<p>
+                            <input class="btn_ver" type="button" value="ver">
+                        </div>
+                        
+                        <div class="div_detalhes">
+                            <h1>Que empolgante!<br>Em breve acontecerá uma nova desova.</h1>
+                            <p>Localização:</p>
+                            {{d.praia}}
+                            <p>Espécie</p>
+                            {{d.especie}}       
+                            <a href="https://www.google.com.br/maps/search/{{a.latitude}},{{a.longitude}}"><input type="button" value="Ver no Mapa"></a>
+                        </div>
+                    </li>
+                {% endfor %}
+                    
+                
+
+            </ul>
+            
+        </div>
+        
+        <a class="btn" id="btn_addtartaruga"><img class="btn_add_tartaruga" src="../static/images/add_green.png" alt="Adicionar Tartaruga"></a>
+    </section>
+
+    <section class="registrartartaruga" id="registrarTartaruga">
+        <form action="" method="POST">   
+            <div class="sessao" id="primeira_sessao">
+                
+                <a href="/principal"><img class="btn_back" src="../static/images/back_icon_white.png" alt="ir para o menu"></a>
                 <!-- titulos -->
                 <div>
                     <h3>Gerenciar Tartarugas</h3><br/>
@@ -41,15 +92,15 @@
                 <!-- Número de anilha -->
                 <div>
                     <label>Número de Identificação</label><br>
-                    <input type="text" name="numerodaanilha" placeholder="Anilha"><br>
+                    <input class = "inputDadosTartaruga" type="text" name="numerodaanilha" placeholder="Anilha"><br>
                 </div>
                 <!-- detalhamento -->
                 <div>
                     <label id = "detalhar">Detalhamento</label><br>
                         <div id = "detalhes">
-                            <input type="radio" name="informacoes" value="houve manutencao" checked>
+                            <input type="radio" id="houvemanutencao" name="informacoes" value="Houve Manutenção" checked>
                             <label for="houvemanutencao"> Houve Manutenção.</label><br>
-                            <input type="radio" name="informacoes" value="nao havia anilha">
+                            <input type="radio" id="naohaviaanilha" name="informacoes" value="Nao Havia Anilha">
                             <label for="naohaviaanilha"> Não havia Anilha.</label><br>
                         </div>
                 </div>
@@ -57,9 +108,9 @@
                 <!-- espécie -->
                 <div>
                     <label>Espécie da Tartaruga</label><br>
-                    <select name="especie">
+                    <select class = "inputDadosTartaruga"  name="especie" id="inputES">
                         <option value="Eretmochelys imbricata">EI – Eretmochelys imbricata</option>
-                        <option value="Chelonia mydas">; CM – Chelonia mydas</option>
+                        <option value="Chelonia mydas"> CM – Chelonia mydas</option>
                         <option value="Caretta caretta">CC – Caretta caretta</option>
                         <option value="Lepidochelys olivacea">LO - Lepidochelys olivacea</option>
                         <option value="Dermocheys Coriacea">DC – Dermocheys Coriacea</option>
@@ -68,65 +119,62 @@
                 <!-- tipo de registro -->
                 <div>
                     <label>Tipo de Registro</label><br>
-                    <select name="tipodeRegistro">
+                    <select class = "inputDadosTartaruga"  name="tipodeRegistro" id="inputTR">
                         <option value="com desova">Com Desova</option>
                         <option value="sem desova">Sem Desova</option>
                         <option value="meia lua">Meia Lua</option>
                         <option value="não identificado">Não Identificado</option>
                     </select><br>
                 </div>
-                <!-- Ativar monitoramento -->
-                <div>
-                    <input type="checkbox" name="monitoramento" value="sim" id = "checkboxMonitoria" checked>
-                    <label for="ativar">Ativar o monitoramento</label><br>
-                    <p id = "informacoesMonitoria">Ao ativar essa opção sua equipe receberá um aviso sobre o provável período de nascimento.</p>
-                </div>
                 
                 <!-- sexo -->
                 <div>
                     <label>Sexo</label><br>
-                    <select name="sexo">
+                    <select class = "inputDadosTartaruga" id="inputSE" name="sexo">
                         <option value="Masculino">Masculino</option>
                         <option value="Feminino">Feminino</option>
                     </select><br>
                 </div>
 
                 <!-- CCC -->
-                <div>
-                    <label>CCC</label><br>
-                    <input type="text" name="ccc" placeholder="Comprimento"><br>
-                </div>
-                <div>
-                    <label>LCC</label><br>
-                    <input type="text" name="lcc" placeholder="Largura"><br>
+                <div class="ccc_ccl">
+                    <div id="ccc">
+                        <label>CCC</label><br>
+                        <input class = "inputDadosTartaruga"  type="text" id="inputCCC" name="ccc" placeholder="Comprimento">
+                    </div>
+
+                    <div id="ccl">
+                        <label>LCC</label><br>
+                        <input class = "inputDadosTartaruga" id="inputCCL" type="text" name="lcc" placeholder="Largura"><br>
+                    </div>
                 </div>
                 
-                <input type="button" id="btn_continuar" value="Continuar"><br>
+                <input class="btn_green" type="button" id="btn_continuar" value="Continuar"><br>
 
-                <a href="/novadesova">Registrar Nova Desova</a><br>
+                <a class="a_novadesova"href="/novadesova">Registrar Nova Desova</a><br>
             </div>
-
                 <!-- segunda sessão -->
+            <div class="sessao" id="segunda_sessao">
+                
+                <a id="btn_voltar"><img class="btn_back" src="../static/images/back_icon_white.png" alt="voltar"></a>
 
-            <div class="segunda_sessao">
-                <input type="button" id="btn_voltar2" value="voltar">
                 <!-- titulos -->
                 <div>
-                    <h3>gerenciar Tartarugas</p><br/>
+                    <h3>Gerenciar Tartarugas</p><br/>
                     <h1>Dados da Localização</h1><br/>
                 </div>
                 <!-- Municipios -->
                 <div>
-                    <label>Município</label>
-                    <select name="municipio">
+                    <label>Município</label><br>
+                    <select class="inputDadosTartaruga" name="municipio" id="inputMU">
                         <option value="Maxaranguape">Maxaranguape</option>
                         <option value="Ceará Mirim">Ceará Mirim</option>
                     </select><br>
                 </div>
                 <!-- Praias -->
                 <div>
-                    <label>Praia</label>
-                    <select name="praia">
+                    <label>Praia</label><br>
+                    <select name="praia" id="inputPR" class="inputDadosTartaruga">
                         <option value="Jacumã">Jacumã - JCM</option>
                         <option value="Porto-Mirim">Porto-Mirim - PMR</option>
                         <option value="Muriú">Muriú - MRU</option>
@@ -147,53 +195,38 @@
                 </div>
                 <!-- Latitude -->
                 <div>
-                    <label>Latitude</label>
-                    <input type="text" name="latitude" placeholder="Latitude"><br>
+                    <label>Latitude</label><br>
+                    <input class="inputDadosTartaruga2" type="text" name="latitude" placeholder="Latitude"><br>
                 </div>
                 <!-- Longitude -->
                 <div>
-                    <label>Longitude</label>
-                    <input type="text" name="longitude" placeholder="Longitude"><br>
+                    <label>Longitude</label><br>
+                    <input class="inputDadosTartaruga2" type="text" name="longitude" placeholder="Longitude"><br>
                 </div>
-                <!-- Data -->
-                <div>
-                    <label>Data</label>
-                    <input type="date" name="data" placeholder="Data"><br>
-                </div>
-                <!-- Hora -->
-                <div>
-                    <label>Hora</label>
-                    <input type="text" name="hora" placeholder="Hora"><br>
+                <!-- Data e Hora -->
+                <div class="data_hora">
+                    <div id="ccc">
+                        <label>Data</label><br>
+                        <input type="date" class="inputDadosTartaruga2" id="inputData" name="data"><br>
+                    </div>
+
+                    <div id="ccl">
+                        <label>Hora</label><br>
+                        <input type="time"  id="inputHora" class="inputDadosTartaruga2" name="hora"><br>
+                    </div>
                 </div>
 
-                <input type="submit" value="Concluir">
+                <input class="btn_green" type="submit" value="Concluir">
             </div>
         </form>
 
     </section>
 
-    <h1>Novas Notificações</h1>
-    <ul id="view">
-        {% for a in a %}
-            <li>
-                <p>Período de Nascimento</p>
-                {{a.data}} - {{a.praia}}
-                <input type="button" value="ver">
-                <div>
-                    <h1>Que empolgante!<br>Em breve acontecerá uma nova desova.</h1>
-                    <p>Localização:</p>
-                    {{a.praia}}
-                    <p>Espécie</p>
-                    {{a.especie}}       
-                    <a href="https://www.google.com.br/maps/search/{{a.latitude}},{{a.longitude}}"><input type="button" value="Ver no Mapa"></a>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+    
 
     
 
     <script src="{{ url_for('static',filename='js/principal.js' )}}"></script>
-    <!-- <script src='../static/js/principal.js'></script> -->
+    <script src='../static/js/principal.js'></script>
 </body>
 </html>

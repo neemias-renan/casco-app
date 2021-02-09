@@ -75,12 +75,11 @@ class Tartaruga(db.Model):
 
     # equipe = db.relationship('Equipe',foreign_keys = equipe_id)
 
-    def __init__(self, anilha,informacoes,especie,tipo_de_registro, monitoramento, sexo,ccc,lcc,municipio,praia,latitude,longitude,data,hora,datadoalerta):
+    def __init__(self, anilha,informacoes,especie,tipo_de_registro, sexo,ccc,lcc,municipio,praia,latitude,longitude,data,hora,datadoalerta):
         self.anilha = anilha
         self.informacoes = informacoes
         self.especie = especie
         self.tipo_de_registro = tipo_de_registro
-        self.monitoramento = monitoramento
         self.sexo = sexo
         self.ccc = ccc
         self.lcc = lcc
@@ -107,17 +106,15 @@ class Nova_Desova(db.Model):
     longitude = db.Column(db.String)
     data = db.Column(db.String)
     hora = db.Column(db.String)
-    monitoramento = db.Column(db.String(3))
     datadoalerta = db.Column(db.String)
 
-    def __init__(self,municipio,praia,latitude,longitude,data,hora, monitoramento,datadoalerta):
+    def __init__(self,municipio,praia,latitude,longitude,data,hora,datadoalerta):
         self.municipio = municipio
         self.praia = praia
         self.latitude = latitude
         self.longitude = longitude
         self.data = data
         self.hora = hora
-        self.monitoramento = monitoramento
         self.datadoalerta = datadoalerta
     
     def __repr__(self):

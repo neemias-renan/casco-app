@@ -7,16 +7,30 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/> -->
     <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>    
 </head>
 <body>
+    <nav class = "menu">
+        <a class="btn" id="btn_fecharmenu"><img class="btn_fechar_menu" src="../static/images/close_icon_green.png" alt="Fechar Menu"></a>
+        <ul>
+            <a href="/principal"><li class="li_menu">Início</li></a>
+            <a href="/historico"><li class="li_menu">Histórico</li></a>
+            <a href="/configuracoes"><li class="li_menu">Configurar Perfil</li></a>
+            <a href="/logout"> <li class="li_menu">Sair</li></a>
+            
+        </ul>
+    </nav>
 
-    <a href="/principal"><img class="btn_back" src="../static/images/menu_icon_blue.png" alt="ir para o menu"></a>
+    <a class="btn" id="btn_abrirmenu"><img class="btn_abrir_menu" src="../static/images/menu_icon_blue.png" alt="Abrir menu"></a>
 
     <div>
         <h2>{{current_user.nome}}</h2>
         <p>Alterar Dados</p>
     </div>
     
+    <script src="{{ url_for('static',filename='js/configuracoes.js' )}}"></script>
+    <script src='../static/js/configuracoes.js'></script>
 
     <form action="" method="POST">
         <div>
