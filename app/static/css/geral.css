@@ -18,9 +18,18 @@
     font-family: "asap-bold";
     src: url("../fonts/Asap-Bold.ttf");
 }
-
+@font-face{
+    font-family: "quick-semibold";
+    src: url("../fonts/Quicksand-SemiBold.ttf");
+}
+@font-face{
+    font-family: "quick-regular";
+    src: url("../fonts/Quicksand-Regular.ttf");
+}
     /* --Fontes do projeto: */
     /*      quick-bold      */
+    /*      quick-semibold   */
+    /*      quick-regular   */
     /*      asap-semibold   */
     /*      asap-regular    */
     /*      asap-medium     */
@@ -44,7 +53,9 @@ button:focus{
     font-size: 17px;
     text-align: center;
 
-    width: 280px;
+    box-shadow: 0px 7px 10px rgba(36, 62, 22, 0.23);
+
+    width: 16em;
     height: 48px;
     cursor: pointer;
 }
@@ -59,7 +70,9 @@ button:focus{
     font-size: 17px;
     text-align: center;
 
-    width: 280px;
+    box-shadow: 0px 6px 10px rgba(2, 31, 84, 0.23);
+
+    width: 16em;
     height: 48px;
     cursor: pointer;
 }
@@ -86,19 +99,17 @@ button:focus{
     font-family: 'asap-medium';
     color: #35424a;
     font-size: 1.1em;
-    width: 38%;
-    padding-bottom:0.5em
+    width: 15em;
+    padding-bottom:0.5em;
+    margin-top: 0.7em;
+    margin-bottom: 1.4em;
 }
 .formInput:focus{
     outline:none;
 }
-/* .btn_back{
-    width: 5%;
-} */
 .btn_add_tartaruga{
-    width: 7%;
+    width: 4em;
 }
-
 .btn{
     cursor: pointer;
 }
@@ -170,7 +181,14 @@ button:focus{
 }
 .div_detalhes{
     display: none;
+    position: absolute;
+    background-color: #5f6af8;
+    width: 100%;
+    height: 100%;
+    color:white;
+    font-family:  quick-semibold;
 }
+
 .h3{
     margin-top:0.4em;
     margin-bottom: 0.1em;
@@ -190,20 +208,19 @@ button:focus{
     width: 114px;
     height: 27px;
     padding: 0px 10px 0px 10px;
-    background: #5f6af859;;
+    background: #5f6af859;
     color: #5f6af8;
     border-color: #ffffff;
     border-width: 1px;
     border-style: solid;
-    border-radius: 1px 1px 1px 1px;
+    border-radius: 8px 1px 5px 1px;
     font-family: "quick-bold";
     font-weight: bold;
     font-size: 14px;
     text-align: center;
-    
-    position: fixed;
-    margin-top: -2.3em;
-    margin-left: 13em;
+    position: relative;
+    margin-top: 0;
+    margin-left: 14em;
     cursor: pointer;
 }
 .btn_abrir_menu{
@@ -220,6 +237,28 @@ button:focus{
 ul{
     padding: 0;
 }
+/* Parte do Visualizar Notificações */
+.h1_notificacoes{
+    font-family: quick-bold;
+    margin-top: 5em;
+    margin-left: 7%;
+}
+.label_dados{
+    font-family: quick-regular;
+    font-size: 1.7em;
+    margin-left: 7%;
+}
+.lb{
+    margin-left: 7%;
+}
+
+.btn_maps{
+    text-align: center;
+    display: block;
+    margin-top: 6em;
+}
+
+
 /* Parte do Menu */
 .menu{
     position: fixed;
@@ -257,9 +296,6 @@ a{
     width: 100%;
     height: 100%;
     position: absolute;
-}
-#primeira_sessao,#segunda_sessao{
-    display: none;
 }
 .inputDadosTartaruga{
     font-size: 0.89em;

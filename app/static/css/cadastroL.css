@@ -1,6 +1,6 @@
 
 #link1:hover,#link2:hover{
-    color: #5f6af8;
+    color: #54ac7e;
 }
 
 #subtitle{
@@ -8,28 +8,28 @@
 }
 
 @media (min-width: 200px) and (max-width: 320px){
-   #login_page{
+   #register_page{
        padding: 1.5em;
    }
    #title_inicial{
     text-align: initial;
     font-size: 88%;
-    margin-top: 11em;
+    margin-top: 0em;
     }
     #options{
         margin-top: 8em;
         font-size: 90%;
     }
     #link1 {
-        margin-right: 3.9em;
+        margin-right: 9.4em;
     }
 
     .btn_blue{
-        width: 15.1em;
+        width: 16em;
     }
     .formInput{
         font-size: 1em;
-        width: 15.7em;
+        width: 16.9em;
     }
     .label_blue {
         font-size: 0.9em;
@@ -37,20 +37,20 @@
 }
 
 @media (min-width:321px) and (max-width: 376px){
-    #login_page{
+    #register_page{
         padding: 2em;;
     }
     #title_inicial{
      text-align: initial;
      font-size: 88%;
-     margin-top: 9em;
+     margin-top: 0em;
      }
      #options{
-         margin-top: 10em;
+         margin-top: 8em;
          font-size: 90%;
      }
      #link1 {
-         margin-right: 7.7em;
+         margin-right: 12.1em;
      }
  
      .btn_blue{
@@ -66,21 +66,22 @@
 }
 
 @media (min-width:377px) and (max-width: 426px){
-    #login_page{
+    #register_page{
         padding: 3.56em;
         padding-bottom: 0;
+        padding-top: 2em;
     }
     #title_inicial{
      text-align: initial;
      font-size: 88%;
-     margin-top: 9em;
+     margin-top: 0em;
      }
      #options{
-         margin-top: 10em;
+         margin-top: 8em;
          font-size: 90%;
      }
      #link1 {
-         margin-right: 7.7em;
+         margin-right: 12.2em;
      }
  
      .btn_blue{
@@ -95,23 +96,23 @@
      }
 }
 
-@media (min-width:427px) and (max-width: 549px){
-    #login_page{
-        padding: 6.1em;
-        padding-top: 4em;
-        padding-bottom: 1em;
+@media (min-width:427px) and (max-width: 550px){
+    #register_page{
+        padding: 7.45em;
+        padding-bottom: 0;
+        padding-top: 35px;
     }
     #title_inicial{
      text-align: initial;
      font-size: 88%;
-     margin-top: 6em;
+     margin-top: 0em;
      }
      #options{
-         margin-top: 10em;
+         margin-top: 8em;
          font-size: 90%;
      }
      #link1 {
-         margin-right: 7.7em;
+        margin-right: 12.1em;
      }
  
      .btn_blue{
@@ -127,22 +128,22 @@
 }
 
 @media (min-width:550px) and (max-width: 768px){
-    #login_page{
+    #register_page{
         padding: 14.1em;
-        padding-top: 6em;
+        padding-top: 2em;
         padding-bottom: 0em;
     }
     #title_inicial{
      text-align: initial;
      font-size: 88%;
-     margin-top: 6em;
+     margin-top: 0em;
      }
      #options{
-         margin-top: 10em;
+         margin-top: 8em;
          font-size: 90%;
      }
      #link1 {
-         margin-right: 7.7em;
+         margin-right: 12.5em;
      }
  
      .btn_blue{
@@ -158,29 +159,32 @@
 }
 
 @media (min-width:769px) and (max-width: 1025px){
-    #login_page{
+    #register_page{
         padding: 10.1em;
-        padding-top: 14em;
+        padding-top: 10em;
         padding-bottom: 0em;
     }
     #title_inicial{
         text-align: initial;
-        font-size: 88%;
-        margin-top: 0em;
+        font-size: 146%;
+        margin-top: 1em;
         position: absolute;
-        margin-left: 34em;
+        margin-left: 18em;
     }
     #options{
-       margin-top: -3em;
-       font-size: 90%;
-       position: absolute;
-       margin-left: 33.3em;
+        margin-top: -7em;
+        font-size: 90%;
+        position: absolute;
+        margin-left: 38em;
     }
     #link1 {
-       margin-right: 4.7em;
+        margin-right: 10em;
     }
     .btn_blue{
-       width: 18.3em;
+        width: 18.3em;
+        position: absolute;
+        margin-left: 24em;
+        margin-top: -9em;
     }
     .formInput{
        font-size: 1em;
@@ -192,29 +196,32 @@
 }
 
 @media (min-width:1026px){
-    #login_page{
-        padding: 10.1em;
-        padding-top: 14em;
+    #register_page{
+        padding: 17.1%;
+        padding-top: 10em;
         padding-bottom: 0em;
     }
     #title_inicial{
         text-align: initial;
-        font-size: 88%;
-        margin-top: 0em;
+        font-size: 146%;
+        margin-top: 1em;
         position: absolute;
-        margin-left: 34em;
+        margin-left: 18em;
     }
     #options{
-       margin-top: -3em;
-       font-size: 90%;
-       position: absolute;
-       margin-left: 33.3em;
+        margin-top: -7em;
+        font-size: 90%;
+        position: absolute;
+        margin-left: 30em;
     }
     #link1 {
-       margin-right: 4.7em;
+        margin-right: 10em;
     }
     .btn_blue{
-       width: 18.3em;
+        width: 18.3em;
+        position: absolute;
+        margin-left: 25.2em;
+        margin-top: -9em;
     }
     .formInput{
        font-size: 1em;
@@ -222,8 +229,5 @@
     }
     .label_blue {
         font-size: 0.9em;
-    }    
+    }
 }
-
-
-

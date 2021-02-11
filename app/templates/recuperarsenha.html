@@ -7,21 +7,23 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/> -->
     <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/recuperarsenha.css' )}}"/>
 </head>
 <body>
     <a href="/login"><img class="btn_back" src="../static/images/back_icon_green.png" alt="voltar"></a>
 
-    <div>
-        <h1>Recuperar Senha</h1>
-        <p>Nós enviaremos sua senha para o seu email.</p><br>
-    </div>
+    <section id="recuperar_senha">
+        <div id="title_inicial">
+            <h1>Recuperar Senha</h1>
+            <p  id="subtitle">Nós enviaremos sua senha para o seu email.</p><br>
+        </div>
 
-    <form action="" method="POST">
-    <label for="email" class="label_green">Email</label><br>
-        <input type="email" name="email" class="formInput" placeholder="exemplo@email.com"><br>
-        <input type="submit" class="btn_green" value="Recuperar">
-    </form>
-    
+        <form action="" method="POST">
+        <label for="email" class="label_green">Email</label><br>
+            <input type="email" name="email" class="formInput" placeholder="exemplo@email.com"><br>
+            <input type="submit" class="btn_green" value="Recuperar">
+        </form>
+    </section>
     
 </body>
 </html>

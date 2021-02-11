@@ -1,0 +1,32 @@
+#btn_fecharmenu{
+    position: absolute;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+#menu_links{
+    margin-top: 10em;
+}
+.menu{
+    width:15em;
+}
+.li_p{
+    margin-left: 1em;
+}
+
+.li_menu{
+    margin-top: -1em;
+}
+
+.icon_btn{
+    width: 1.5em;
+    position: absolute;
+    margin-left: -1.7em;
+    margin-top: 0.7em;
+}
+.icon_btn_arrow{
+    width: 1.5em;
+    position: absolute;
+    margin-left: 9.6em;
+    margin-top: -3.25em;
+}

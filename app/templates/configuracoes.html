@@ -7,26 +7,53 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/> -->
     <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/menu.css' )}}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/configuracoes.css' )}}"/>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>    
 </head>
 <body>
+    
     <nav class = "menu">
         <a class="btn" id="btn_fecharmenu"><img class="btn_fechar_menu" src="../static/images/close_icon_green.png" alt="Fechar Menu"></a>
-        <ul>
-            <a href="/principal"><li class="li_menu">Início</li></a>
-            <a href="/historico"><li class="li_menu">Histórico</li></a>
-            <a href="/configuracoes"><li class="li_menu">Configurar Perfil</li></a>
-            <a href="/logout"> <li class="li_menu">Sair</li></a>
+        <ul id = "menu_links">
+            <a href="/principal">
+                <li class="li_menu">
+                    <img class="icon_btn" src="../static/images/home_icon_white.png">
+                    <p class="li_p">Início</p> 
+                    <img class="icon_btn_arrow" src="../static/images/arrow_right_white.png">
+                </li>
+            </a>
+            <a href="/historico">
+                <li class="li_menu">
+                    <img class="icon_btn" src="../static/images/historico_icon_white.png">
+                    <p class="li_p">Histórico</p>
+                    <img class="icon_btn_arrow" src="../static/images/arrow_right_white.png">
+                </li>
+            </a>
+            <a href="/configuracoes">
+                <li class="li_menu">
+                    <img class="icon_btn" src="../static/images/config_icon_white.png">
+                    <p class="li_p"> Configurar Perfil</p>
+                    <img class="icon_btn_arrow" src="../static/images/arrow_left_green.png">
+                </li>
+            </a>
+            <a href="/logout"> 
+                <li class="li_menu">
+                    <img class="icon_btn" src="../static/images/exit_icon_white.png">
+                    <p class="li_p">Sair</p>
+                </li>
+            </a>
             
         </ul>
     </nav>
 
+
     <a class="btn" id="btn_abrirmenu"><img class="btn_abrir_menu" src="../static/images/menu_icon_blue.png" alt="Abrir menu"></a>
 
-    <div>
-        <h2>{{current_user.nome}}</h2>
-        <p>Alterar Dados</p>
+    <div class="title">
+        <h2 id="h2_conf">{{current_user.nome}}</h2>
+        <p id="subtitle">Alterar Dados</p>
     </div>
     
     <script src="{{ url_for('static',filename='js/configuracoes.js' )}}"></script>
@@ -34,22 +61,22 @@
 
     <form action="" method="POST">
         <div>
-            <label class="label_blue" for="nome">Nome</label><br>
+            <label class="label_blue" id="lb_blue1" for="nome">Nome</label><br>
             <input class="formInput" type="text" name="novoNome" id="nome" placeholder="{{current_user.nome}}" value="{{current_user.nome}}"><br>
         </div>
 
         <div>
-            <label class="label_blue" for="email">Email</label><br>
+            <label class="label_blue"  id="lb_blue2"for="email">Email</label><br>
             <input class="formInput" type="email" name="novoEmail" id="email" placeholder="{{current_user.email}}" value="{{current_user.email}}"><br>
         </div>
 
         <div>
-            <label class="label_blue" for="senha">Senha Atual</label><br>
+            <label class="label_blue" id="lb_blue3" for="senha">Senha Atual</label><br>
             <input class="formInput" type="password" name="senhaAtual" id="senhaAtual" autocomplete="new-password"><br>
         </div>
 
         <div>
-            <label class="label_blue" for="senhaNova">Nova Senha</label><br>
+            <label class="label_blue" id="lb_blue4" for="senhaNova">Nova Senha</label><br>
             <input class="formInput" type="password" name="senhaNova" id="senhaNova" autocomplete="new-password"><br>
         </div>
 

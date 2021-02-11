@@ -8,7 +8,7 @@
         <!-- Falta Adicionar Favicon OFICIAL -->
     <!-- <link rel="shortcut icon" href=""/> -->
     <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/>
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/> -->
+    <link rel='stylesheet' type='text/css' media='screen' href="../static/css/cadastroP.css"/>
 
   </head>
   <body>
@@ -20,19 +20,19 @@
         <form action="" method="POST">
           {{ form.csrf_token }}
           <label class="label_green" for="nome">Nome</label><br>
-          {{form.nome(class = "formInput", placeholder="Digite seu email")}}<br>
+          {{form.nome(class = "formInput", placeholder="Digite seu nome")}}<br>
           <label class="label_green" for="email">Email</label><br>
           {{form.email(class = "formInput", placeholder="Digite seu email")}}<br>
           <label class="label_green" for="senha">Senha</label><br>
           {{form.senha(class = "formInput", placeholder="Digite sua senha")}}<br>
           <label class="label_green" for="confirmarSenha">Confirmar Senha</label><br>
-          {{form.confirmarSenha(class = "formInput", placeholder="Digite sua senha")}}<br>
+          {{form.confirmarSenha(class = "formInput", placeholder="Confirme sua senha")}}<br>
           <input class = "btn_green" type="submit" value="Continue"><br>
         </form>
         
         <div id="options">
-          <a class="link" href="/">Voltar</a>
-          <a class="link" href="/registerl">Formar Equipe</a>
+          <a class="link" id="link1" href="/">Voltar</a>
+          <a class="link" id="link2" href="/registerl">Formar Equipe</a>
             
         </div>
     </section>

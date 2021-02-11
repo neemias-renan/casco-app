@@ -7,49 +7,76 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/> -->
     <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/menu.css' )}}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/historico.css' )}}"/>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <nav class = "menu">
         <a class="btn" id="btn_fecharmenu"><img class="btn_fechar_menu" src="../static/images/close_icon_green.png" alt="Fechar Menu"></a>
-        <ul>
-            <a href="/principal"><li class="li_menu">Início</li></a>
-            <a href="/historico"><li class="li_menu">Histórico</li></a>
-            <a href="/configuracoes"><li class="li_menu">Configurar Perfil</li></a>
-            <a href="/logout"> <li class="li_menu">Sair</li></a>
+        <ul id = "menu_links">
+            <a href="/principal">
+                <li class="li_menu">
+                    <img class="icon_btn" src="../static/images/home_icon_white.png">
+                    <p class="li_p">Início</p> 
+                    <img class="icon_btn_arrow" src="../static/images/arrow_right_white.png">
+                </li>
+            </a>
+            <a href="/historico">
+                <li class="li_menu">
+                    <img class="icon_btn" src="../static/images/historico_icon_white.png">
+                    <p class="li_p">Histórico</p>
+                    <img class="icon_btn_arrow" src="../static/images/arrow_left_green.png">
+                </li>
+            </a>
+            <a href="/configuracoes">
+                <li class="li_menu">
+                    <img class="icon_btn" src="../static/images/config_icon_white.png">
+                    <p class="li_p"> Configurar Perfil</p>
+                    <img class="icon_btn_arrow" src="../static/images/arrow_right_white.png">
+                </li>
+            </a>
+            <a href="/logout"> 
+                <li class="li_menu">
+                    <img class="icon_btn" src="../static/images/exit_icon_white.png">
+                    <p class="li_p">Sair</p>
+                </li>
+            </a>
             
         </ul>
     </nav>
 
     <a class="btn" id="btn_abrirmenu"><img class="btn_abrir_menu" src="../static/images/menu_icon_blue.png" alt="Abrir menu"></a>
 
-    <h1>Histórico</h1>
+    <h1 class="h1_title">Histórico</h1>
 
-    <form action="" method="POST">
-        <label class="label_blue" for="identificador">Número de Identificação</label><br>
-        <input class="formInput" type="text" name="identificador" placeholder="Digite a anilha da tartaruga"><br>
-        <input class="btn_blue" type="submit" value="Pesquisar">
-    </form>
-    
-    <ul id="view">
-        {% for t in t %}
-            <li class="li">
-                <div class="div">
-                    <p class="datahora">{{t.data}} - {{t.hora}}</p>
-                    <p class="localizacao">Em {{t.praia}} - {{t.municipio}}</p>
-                    <p class="especie">{{t.especie}}</p>
-                    <p class="informacoes">{{t.informacoes}}</p>
-                    <p class="tipoderegistro">Tipo do Registro: {{t.tipo_de_registro}}</p>
-                    <div class="div_dados">
-                        <p class="p_dados">Sexo: {{t.sexo}}</p>
-                        <p class="p_dados">CCC: {{t.ccc}}</p>
-                        <p class="p_dados">LCC: {{t.lcc}}</p>
+    <div>
+        <form action="" method="POST">
+            <label class="label_blue" for="identificador">Número de Identificação:</label><br>
+            <input class="formInput" type="text" name="identificador" placeholder="Digite a anilha da tartaruga"><br>
+            <input class="btn_blue" type="submit" value="Pesquisar">
+        </form>
+        
+        <ul id="view">
+            {% for t in t %}
+                <li class="li">
+                    <div class="div">
+                        <p class="datahora">{{t.data}} - {{t.hora}}</p>
+                        <p class="localizacao">Em {{t.praia}} - {{t.municipio}}</p>
+                        <p class="especie">{{t.especie}}</p>
+                        <p class="informacoes">{{t.informacoes}}</p>
+                        <p class="tipoderegistro">Tipo do Registro: {{t.tipo_de_registro}}</p>
+                        <div class="div_dados">
+                            <p class="p_dados">Sexo: {{t.sexo}}</p>
+                            <p class="p_dados">CCC: {{t.ccc}}</p>
+                            <p class="p_dados">LCC: {{t.lcc}}</p>
+                        </div>
                     </div>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
     <script src="{{ url_for('static',filename='js/historico.js' )}}"></script>
     <script src='../static/js/historico.js'></script>
 </body>

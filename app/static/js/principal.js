@@ -24,28 +24,10 @@
         $("#primeira_sessao").show()
     })
 // VER DETALHES - NOTIFICAÇÕES
-    $('.btn_ver').click(function(){
-        $('.div_detalhes').show()
-    })
+function btn_abrir(id_div){
+    $(id_div).show()
+}
 
-// $('#btn_voltar2').click(function(){
-//     $(".segunda_sessao").hide();
-//     $(".primeira_sessao").show()
-// })
-
-// $('#btn_continuar').click(function(){
-//     $(".primeira_sessao").hide();
-//     $(".segunda_sessao").show()
-// });
-
-// $('#detalhar').click(function(){
-//     $("#detalhes").toggle()
-// })
-
-// $('#checkboxMonitoria').click(function(){
-//     $("#informacoesMonitoria").toggle()
-// })
-
-// $('#atribuirCoordenadas').click(function(){
-//     $("#checkboxCoordenadas").toggle()
-// })
+$('.btn_ver').click(function(){
+    $("#tela_principal").hide()
+})

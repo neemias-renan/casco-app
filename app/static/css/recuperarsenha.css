@@ -1,0 +1,204 @@
+
+#link1:hover,#link2:hover{
+    color: #5f6af8;
+}
+
+#subtitle{
+    color: #989eb1;
+}
+
+@media (min-width: 200px) and (max-width: 320px){
+   #recuperar_senha{
+    padding-left: 2em;
+    padding-right: 2em;
+   }
+   #title_inicial{
+    text-align: initial;
+    font-size: 88%;
+    margin-top: 11em;
+    }
+    .btn_back{
+        position: absolute;
+        margin-top: -8em;
+        margin-left: 2em;
+    }
+    .btn_green{
+        width: 15.1em;
+        margin-top: 3em;
+    }
+    .formInput{
+        font-size: 1em;
+        width: 15.7em;
+    }
+}
+
+@media (min-width:321px) and (max-width: 376px){
+    #recuperar_senha{
+        padding-left: 2em;
+        padding-right: 2em;
+       }
+       #title_inicial{
+        text-align: initial;
+        font-size: 88%;
+        margin-top: 11em;
+        }
+        .btn_back{
+            position: absolute;
+            margin-top: -8em;
+            margin-left: 2em;
+        }
+        .btn_green{
+            width: 18.3em;
+            margin-top: 3em;
+        }
+        .formInput{
+            font-size: 1em;
+            width: 19.2em;
+        }
+        .label_blue {
+            font-size: 0.9em;
+        }
+}
+
+@media (min-width:377px) and (max-width: 426px){
+    #recuperar_senha{
+        padding-left: 4em;
+        padding-right: 4em;
+       }
+       #title_inicial{
+        text-align: initial;
+        font-size: 88%;
+        margin-top: 11em;
+        }
+        .btn_back{
+            position: absolute;
+            margin-top: -8em;
+            margin-left: 4em;
+        }
+        .btn_green{
+            width: 17.5em;
+            margin-top: 3em;
+        }
+        .formInput{
+            font-size: 1em;
+            width: 18.2em;
+        }
+        .label_blue {
+            font-size: 0.9em;
+        }
+}
+
+@media (min-width:427px) and (max-width: 549px){
+    #recuperar_senha{
+        padding-left: 8em;
+        padding-right: 8em;
+       }
+       #title_inicial{
+        text-align: initial;
+        font-size: 88%;
+        margin-top: 11em;
+       }
+        .btn_back{
+            position: absolute;
+            margin-top: -8em;
+            margin-left: 4em;
+        }
+        .btn_green{
+            width: 17.2em;
+            margin-top: 3em;
+        }
+        .formInput{
+            font-size: 1em;
+            width: 18.2em;
+        }
+        .label_blue {
+            font-size: 0.9em;
+        }
+}
+
+@media (min-width:550px) and (max-width: 768px){
+    #recuperar_senha{
+        padding-left: 15em;
+        padding-right: 15em;
+       }
+       #title_inicial{
+        text-align: initial;
+        font-size: 88%;
+        margin-top: 11em;
+        }
+        .btn_back{
+            position: absolute;
+            margin-top: -8em;
+            margin-left: 4em;
+        }
+        .btn_green{
+            width:17em;
+            margin-top: 3em;
+        }
+        .formInput{
+            font-size: 1em;
+            width: 17.6em;
+        }
+        .label_blue {
+            font-size: 0.9em;
+        }
+}
+
+@media (min-width:769px) and (max-width: 1025px){
+    #recuperar_senha{
+        padding-left: 23em;
+        padding-right: 23em;
+       }
+       #title_inicial{
+        text-align: initial;
+        font-size: 88%;
+        margin-top: 11em;
+        }
+        .btn_back{
+            position: absolute;
+            margin-top: -8em;
+            margin-left: 4em;
+        }
+        .btn_green{
+            width:17em;
+            margin-top: 3em;
+        }
+        .formInput{
+            font-size: 1em;
+            width: 17.6em;
+        }
+        .label_blue {
+            font-size: 0.9em;
+        }
+}
+
+@media (min-width:1026px){
+    #recuperar_senha{
+        padding-left: 27.4em;
+        padding-right: 27.4em;
+       }
+       #title_inicial{
+        text-align: initial;
+        font-size: 88%;
+        margin-top: 11em;
+        }
+        .btn_back{
+            position: absolute;
+            margin-top: -8em;
+            margin-left: 4em;
+        }
+        .btn_green{
+            width:17em;
+            margin-top: 3em;
+        }
+        .formInput{
+            font-size: 1em;
+            width: 17.6em;
+        }
+        .label_blue {
+            font-size: 0.9em;
+        }
+}
+
+
+

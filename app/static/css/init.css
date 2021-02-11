@@ -1,0 +1,231 @@
+.btn_abrir_menu{
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+.nome{
+    font-family: quick-bold;
+}
+
+@media (min-width: 200px) and (max-width: 320px){
+    .p_titulo{
+        margin-left: 0.6em;
+    }
+    .notificacoes{
+        padding: 1em;
+        padding-bottom: 0;
+    }
+    .div_aviso{
+        width: 269px;
+        height: 3.6em;
+    }
+    .h3 {
+        font-size: 1em;
+    }
+    .p {
+        font-size: 0.72em;
+    }
+    .btn_ver{
+        margin-top: -1em;
+        margin-left: 11.5em;
+        position: initial;
+    }
+
+    #btn_addtartaruga{
+        position: absolute;
+        margin-top: 39em;
+        margin-left: 15em;
+    }
+}
+
+@media (min-width:321px) and (max-width: 376px){
+    .p_titulo{
+        margin-left: 1.6em;
+    }
+    .notificacoes{
+        padding: 2.8em;
+        padding-bottom: 0;
+    }
+    .div_aviso{
+        width: 269px;
+        height: 3.6em;
+    }
+    .h3 {
+        font-size: 1em;
+    }
+    .p {
+        font-size: 0.72em;
+    }
+    .btn_ver{
+        margin-top: -1em;
+        margin-left: 11.5em;
+        position: initial;
+    }
+
+    #btn_addtartaruga{
+        position: absolute;
+        margin-top: 39em;
+        margin-left: 19em;
+    }
+}
+
+@media (min-width:377px) and (max-width: 426px){
+    .p_titulo{
+        margin-left: 1.6em;
+    }
+    .notificacoes{
+        padding: 2.8em;
+        padding-bottom: 0;
+    }
+    .div_aviso{
+        width: 318px;
+        height: 4.6em;
+    }
+    .h3 {
+        font-size: 1.1em;
+    }
+    .p {
+        font-size: 0.8em;
+    }
+    .btn_ver{
+        margin-top: 0.3em;
+        margin-left: 14.5em;
+        position: initial;
+    }
+
+    #btn_addtartaruga{
+        position: absolute;
+        margin-top: 39em;
+        margin-left: 21em;
+    }
+}
+
+@media (min-width:427px) and (max-width: 550px){
+    .p_titulo{
+        margin-left: 3.8em;
+    }
+    .notificacoes{
+        padding: 6.6em;
+        padding-top: 2em;
+        padding-bottom: 0;
+    }
+    .div_aviso{
+        width: 318px;
+        height: 4.6em;
+    }
+    .h3 {
+        font-size: 1.1em;
+    }
+    .p {
+        font-size: 0.8em;
+    }
+    .btn_ver{
+        margin-top: 0.3em;
+        margin-left: 14.5em;
+        position: initial;
+    }
+
+    #btn_addtartaruga{
+        position: fixed;
+        margin-top: 39em;
+        margin-left: 29em;
+    }
+}
+
+@media (min-width:550px) and (max-width: 768px){
+    .p_titulo{
+        margin-left: 3.8em;
+    }
+    .notificacoes{
+        padding: 6.6em;
+        padding-top: 2em;
+        padding-bottom: 0;
+    }
+    .div_aviso{
+        width: 318px;
+        height: 4.6em;
+    }
+    .h3 {
+        font-size: 1.1em;
+    }
+    .p {
+        font-size: 0.8em;
+    }
+    .btn_ver{
+        margin-top: 0.3em;
+        margin-left: 14.5em;
+        position: initial;
+    }
+
+    #btn_addtartaruga{
+        position: fixed;
+        margin-top: 39em;
+        margin-left: 43em;
+    }
+}
+
+@media (min-width:769px) and (max-width: 1025px){
+    .p_titulo{
+        margin-left: 3.8em;
+    }
+    .notificacoes{
+        padding: 6.6em;
+        padding-top: 2em;
+        padding-bottom: 0;
+    }
+    .div_aviso{
+        width: 318px;
+        height: 4.6em;
+    }
+    .h3 {
+        font-size: 1.1em;
+    }
+    .p {
+        font-size: 0.8em;
+    }
+    .btn_ver{
+        margin-top: 0.3em;
+        margin-left: 14.5em;
+        position: initial;
+    }
+
+    #btn_addtartaruga{
+        position: fixed;
+        margin-top: 22em;
+        margin-left: 45em;
+    }
+}
+
+@media (min-width:1026px){
+    .p_titulo{
+        margin-left: 2.8em;
+        font-size: 2.2em;
+        margin-top: 0.7em;
+    }
+    .notificacoes{
+        padding: 6.6em;
+        padding-top: 2em;
+        padding-bottom: 0;
+    }
+    .div_aviso{
+        width: 318px;
+        height: 4.6em;
+    }
+    .h3 {
+        font-size: 1.1em;
+    }
+    .p {
+        font-size: 0.8em;
+    }
+    .btn_ver{
+        margin-top: 0.3em;
+        margin-left: 14.5em;
+        position: initial;
+    }
+
+    #btn_addtartaruga{
+        position: fixed;
+        margin-top: 22em;
+        margin-left: 45em;
+    }
+}
