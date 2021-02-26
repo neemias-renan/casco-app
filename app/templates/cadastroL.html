@@ -1,43 +1,64 @@
-
 <html>
     <head>
       <meta charset='utf-8'>
       <meta http-equiv='X-UA-Compatible' content='IE=edge'>
       <title>Casco</title>
       <meta name='viewport' content='width=device-width, initial-scale=1'>
-          <!-- Falta Adicionar Favicon OFICIAL -->
-      <!-- <link rel="shortcut icon" href=""/> -->
-      <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/> -->
-      <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
-      <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/cadastroL.css' )}}"/>
+      <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css')}}"/>
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </head>
+
     <body>
-      <section id = "register_page">
-          <div id="title_inicial">
-              <h1>Monte sua Equipe.</h1>
-          </div>
-  
-          <form action="" method = "POST">
+      <div  class="cabecalho">
+        <image id="logo" src="{{ url_for('static',filename='images/tartaruga.png' )}}">
+        <h1 id="titulo_casco">Casco</h1>
+      </div>
+
+      <section class="pagina_de_registro">
+          <form id="form" action="" method = "POST">
               {{ form.csrf_token }}
               {{ equipeform.csrf_token }}
-              <label class = "label_blue" for="nome">Nome</label><br>
-              {{form.nome(class = "formInput", placeholder="Digite seu email")}}<br>
-              <label class = "label_blue" for="email">Email</label><br>
-              {{form.email(class = "formInput", placeholder="Digite seu email")}}<br>
-              <label class = "label_blue" for="nomedaequipe">Nome da Equipe</label><br>
-              {{equipeform.nomedaequipe(class = "formInput", placeholder="Digite o nome da equipe")}}<br>
-              <label class = "label_blue" for="senha">Senha</label><br>
-              {{form.senha(class = "formInput", placeholder="Digite sua senha")}}<br>
-              <label class = "label_blue"for="confirmarSenha">Confirmar Senha</label><br>
-              {{form.confirmarSenha(class = "formInput", placeholder="Digite sua senha")}}<br>
-              <input class="btn_blue" type="submit" value="Continue"><br>
+              <h1 class="h1_titulo">Monte sua Equipe.</h1>
+              <div class="div_input">
+                <label class = "label" for="nome">Nome</label>
+                {{form.nome(class = "formInput", placeholder="Digite seu nome")}}
+              </div>
+              <div class="div_input">
+                <label class = "label" for="email">Email</label>
+                {{form.email(class = "formInput",id="add_email",  placeholder="Digite seu email")}}
+                <p class="alerta_registro" id="alert_email">
+                  {{alerta_email}}
+                </p>
+              </div>
+              
+              <div class="div_input">
+                <label class = "label" for="nomedaequipe">Nome da Equipe</label>
+                {{equipeform.nomedaequipe(class = "formInput", id="add_nomedaequipe", placeholder="Digite o nome da equipe")}}
+                <p class="alerta_registro" id="alert_equipe">
+                  {{alerta_equipe}}
+                </p>
+              </div>
+
+              <div class="div_input">
+                <label class = "label" for="senha">Senha</label>
+                {{form.senha(class = "formInput", id="add_senha", minlength="8", placeholder="Digite sua senha")}}
+              </div>
+              <div class="div_input">
+                <label class = "label"for="confirmarSenha">Confirmar Senha</label>
+                {{form.confirmarSenha(class = "formInput", minlength="8",  placeholder="Digite sua senha")}}
+                <p class="alerta_registro" id="alert_senha">
+                  {{alerta_senha}}
+                </p>
+              </div>
+              <input class="btn" type="submit" value="Cadastrar-se">
           </form>
           
           <div id="options">
-              <a class="link" href="/registerp">Voltar</a>
+              <a class="link" href="/registrarpesquisador">Voltar</a>
           </div>
       </section>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src=''></script>
+      <script src="{{ url_for('static',filename='js/register_user.js' )}}"></script>
     </body>
   </html> 

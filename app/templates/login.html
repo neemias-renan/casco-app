@@ -5,42 +5,45 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Casco</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <!-- Falta Adicionar Favicon OFICIAL -->
-    <!-- <link rel="shortcut icon" href=""/> -->
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/> -->
     <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
-    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/login.css' )}}"/>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <section id = "login_page">
-      <div id="title_inicial">
-        <h1>Seja Bem Vindo!</h1>
-        <p id="subtitle">É sempre um prazer ter você conosco.</p>
+    <section id = "pagina_login">      
+      <div id="titulo_inicial">
+        <image id="img_Tartaruga" src="{{ url_for('static',filename='images/tartaruga.png' )}}"><br/>
+        <h1 id="titulo">Casco</h1>
+        <p id="subtitulo">Conservação de Tartarugas Marinhas</p>
       </div>
 
-      <form action = "" method = "POST">
-        {{ form.csrf_token }}
-        <div>
-          <label class="label_blue">Email</label><br>
-          {{form.email(class = "formInput", placeholder="Digite seu email")}}
-          <br>
-        </div>
+      <div id="div_form">
+        <form id="form" action = "" method = "POST">
+          {{ form.csrf_token }}
 
-        <div>
-          <label class="label_blue">Senha</label><br>  
-          {{form.senha(class = "formInput", placeholder="Digite sua senha")}}
-          <br>
-        </div>
-       
-        <button class="btn_blue" type="submit">Entrar</button>
-      </form>        
+          
+          <div class="div_input">
+            <label class="label" for="email">Email</label>
+            {{form.email(class = "formInputEmail", id="add_email", placeholder="Digite seu email")}}
+            <p class="alerta_registro" id="alert_erro">
+              {{alerta_erro}}
+            </p>
+          </div>
 
-      <div id="options">
-       <a class="link" id="link1" href="/recuperarsenha">Esqueceu a senha?</a>
-       <a class="link" id="link2" href="/registerp">Inscrever-se</a>
-      </div>
+          <div class="div_input">
+            <label class="label" for="senha">Senha</label> 
+            {{form.senha(class = "formInputSenha", id="add_senha",  placeholder="Digite sua senha")}}
+          </div>
+          
+          <a class="link" id="link1" href="/recuperarsenha">Esqueceu a senha?</a>        
+          <input class = "btn" type="submit" value="Entrar">
+        </form>
+      </div>        
+      
+      <a class="link" id="link2" href="/registrarpesquisador">Inscrever-se</a>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src=''></script>
+    <script src="{{ url_for('static',filename='js/register_user.js' )}}"></script>
   </body>
 </html> 

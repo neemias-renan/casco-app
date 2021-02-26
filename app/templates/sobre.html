@@ -8,7 +8,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="Menu_Tela">
@@ -57,16 +57,16 @@
                 <a class="botao" href="/configuracoes">
                     <li class="li_menu">
                         <p id="li_editarPerfil">Editar Perfil</p>
-                        <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7 13L1 7L7 1" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>   
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </li>
                 </a>
                 <a class="botao" href="/sobre">
                     <li class="li_menu">
                         <p id="li_sobre">Sobre Nós</p>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 13L1 7L7 1" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </li>
                 </a>
@@ -90,38 +90,5 @@
         <path d="M4.5 9H31.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M4.5 27H31.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-
-    <section class="pagina_de_registro">
-        <div class="titulo_editarPerfil">
-            <h2 id="h2_conf">{{current_user.nome}}</h2>
-            <p id="sub">Alterar Dados</p>
-        </div>
-        
-        <form class="form" action="" method="POST">
-            <div class="div_input">
-                <label class="lb1" id="lb_blue1" for="nome">Nome</label>
-                <input class="formInputEditarPerfil" type="text" name="novoNome" id="nome" placeholder="{{current_user.nome}}" value="{{current_user.nome}}">
-            </div>
-
-            <div class="div_input">
-                <label class="lb1"  id="lb_blue2"for="email">Email</label>
-                <input class="formInputEditarPerfil" type="email" name="novoEmail" id="email" placeholder="{{current_user.email}}" value="{{current_user.email}}">
-            </div>
-
-            <div class="div_input">
-                <label class="lb2" id="lb_blue3" for="senha">Senha Atual</label>
-                <input class="formInputEditarPerfil" type="password" name="senhaAtual" id="senhaAtual" autocomplete="new-password">
-            </div>
-
-            <div class="div_input">
-                <label class="lb2" id="lb_blue4" for="senhaNova">Nova Senha</label>
-                <input class="formInputEditarPerfil" type="password" name="senhaNova" id="senhaNova" autocomplete="new-password">
-            </div>
-
-            <button class="btn" type="submit">Salvar</button>
-        </form>
-    </section>
-    
-    <script src="{{ url_for('static',filename='js/principal.js' )}}"></script>
 </body>
 </html>

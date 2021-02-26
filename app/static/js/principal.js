@@ -1,19 +1,14 @@
 // ABRIR E FECHAR MENU.
-    $('#btn_abrirmenu').click(function(){
+    $('#icon_abrirMenu').click(function(){
         $(".menu").show(500);
+        $('#icon_abrirMenu').hide();
     })
-    $('#btn_fecharmenu').click(function(){
+    $('.icon_fecharMenu').click(function(){
         $(".menu").hide(300);
+        $('#icon_abrirMenu').show();
     })
 
 // ADICIONAR NOVA TARTARUGA
-
-    $('#btn_addtartaruga').click(function(){
-        $("#tela_principal").hide();
-        $(".registrartartaruga").show()
-        $("#primeira_sessao").show()
-    })
-
     $('#btn_continuar').click(function(){
         $("#primeira_sessao").hide();
         $("#segunda_sessao").show()
@@ -26,8 +21,7 @@
 // VER DETALHES - NOTIFICAÇÕES
 function btn_abrir(id_div){
     $(id_div).show()
-}
+    // $(".visualizar_notificacao").show()
+    $(".container").hide()
 
-$('.btn_ver').click(function(){
-    $("#tela_principal").hide()
-})
+}

@@ -1,4 +1,10 @@
 from app import db
+# from sqlalchemy import ForeignKey
+# from sqlalchemy.orm import relationship
+from sqlalchemy import Table, Column, Integer, ForeignKey
+from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
+
 
 class User(db.Model):
     __tablename__ = "users"
@@ -9,6 +15,9 @@ class User(db.Model):
     email = db.Column(db.String, unique = True)
     senha = db.Column(db.String)
     tipo = db.Column(db.String(11))
+    equipe_id = db.Column(db.Integer, db.ForeignKey('equipes.id'),nullable=False)
+    equipes = db.relationship("Equipe",backref=db.backref("users",lazy=True))
+
     
     # lider / pesquisador
 
@@ -25,30 +34,29 @@ class User(db.Model):
     def get_id(self):
         return str(self.id)
 
-    def __init__(self, nome, email, senha,tipo):
+    def __init__(self, nome, email, senha,tipo,equipes):
         self.nome = nome
         self.email = email
         self.senha = senha
         self.tipo = tipo
+        self.equipes = equipes
 
     
     def __repr__(self):
-        return "%r" % self.nome
-
+        return "%r,%r" % (self.nome, self.email)
 
 class Equipe(db.Model):
-    __tablename__ = "equipe"
+    __tablename__ = "equipes"
     id = db.Column(db.Integer, primary_key = True)
     nomedaequipe = db.Column(db.String, unique = True)
-
-  
+    
 
     def __init__(self, nomedaequipe):
         self.nomedaequipe = nomedaequipe
 
      
     def __repr__(self):
-        return "Equipe %r" % self.nomedaequipe
+        return "%r" % (self.nomedaequipe)
 
 class Tartaruga(db.Model):
     __tablename__ = "tartarugas"
@@ -94,7 +102,6 @@ class Tartaruga(db.Model):
     
     def __repr__(self):
         return "Anilha = '%s', Informações de Registro = '%s', Espécie = '%s', Tipo de Registro = '%s', Sexo = '%s', CCC = '%s', LCC = '%s', Município = '%s', Praia = '%s', Latitude = '%s', Longitude = '%s', Data do registro = '%s', Hora do registro = '%s'" % (self.anilha, self.informacoes, self.especie, self.tipo_de_registro, self.sexo, self.ccc, self.lcc, self.municipio, self.praia, self.latitude, self.longitude, self.data, self.hora)
-
 
 class Nova_Desova(db.Model):
     __tablename__ = "novas_desovas"

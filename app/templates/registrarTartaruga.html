@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Casco</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="Menu_Tela">
+        <nav class = "menu">
+            <svg class="icon_fecharMenu"width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M27 9L9 27" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 9L27 27" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+                
+                
+            <ul id = "menu_links">
+                <a class="botao" href="/principal">
+                    <li class="li_menu">
+                        <p id="li_Inicio">Início</p>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>                        
+                    </li>
+                </a>
+                <a class="botao" href="/registrarTartaruga">
+                    <li class="li_menu">
+                        <p id="li_registrarTartaruga">Registrar Tartaruga</p>
+                        <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 13L1 7L7 1" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg> 
+                    </li>
+                </a>
+
+                <a class="botao" href="/historico">
+                    <li class="li_menu">
+                        <p id="li_Historico">Histórico</p>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </li>
+                </a>                   
+                <a class="botao" href="/gerenciarequipe">
+                    <li class="li_menu">
+                        <p id="li_gerenciarEquipe">Gerenciar Equipe</p>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </li>
+                </a> 
+                <a class="botao" href="/configuracoes">
+                    <li class="li_menu">
+                        <p id="li_editarPerfil">Editar Perfil</p>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </li>
+                </a>
+                <a class="botao" href="/sobre">
+                    <li class="li_menu">
+                        <p id="li_sobre">Sobre Nós</p>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </li>
+                </a>
+                <a class="botao" href="/logout">
+                    <li class="li_menu">
+                        <p id="li_sair">Sair</p>
+                    </li>
+                </a>  
+
+            </ul>
+        </nav>
+    </div>
+
+    <div  class="cabecalhoPrincipal">
+        <h1 id="titulo_casco">Casco</h1>
+        <image id="logoPrincipal" src="{{ url_for('static',filename='images/tartaruga.png' )}}"></image>
+    </div>
+
+    <svg id ="icon_abrirMenu" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.5 18H31.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4.5 9H31.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4.5 27H31.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <section class="registrartartaruga" id="registrarTartaruga">
+        <form action="" method="POST">   
+            <div class="sessao" id="primeira_sessao">
+                <div class="div_gerenciartartaruga" id="div_gerenciartartarugaID">
+                    <h1 class="h1_titulo">Dados das Tartarugas</h1>
+<!-- Número de anilha -->
+                    <div  class="div_input">
+                        <label class="label">Número de Identificação</label>
+                        <input class = "inputDadosTartaruga" type="text" name="numerodaanilha" placeholder="Anilha">
+                    </div>
+<!-- detalhamento -->
+                    <div  class="div_input">
+                        <label id = "detalhar"  class="label">Detalhamento</label>
+                            <div id = "detalhes">
+                                <input type="radio" id="houvemanutencao" name="informacoes" value="Houve Manutenção" checked>
+                                <label for="houvemanutencao"> Houve Manutenção.</label><br>
+                                <input type="radio" id="naohaviaanilha" name="informacoes" value="Não Havia Anilha">
+                                <label for="naohaviaanilha"> Não havia Anilha.</label>
+                            </div>
+                    </div>
+<!-- espécie -->
+                    <div  class="div_input">
+                        <label  class="label" >Espécie da Tartaruga</label>
+                        <select class = "inputDadosTartaruga"  name="especie" id="inputES">
+                            <option value="Desconhecido">De – Desconhecido</option>
+                            <option value="Eretmochelys imbricata">EI – Eretmochelys imbricata</option>
+                            <option value="Chelonia mydas"> CM – Chelonia mydas</option>
+                            <option value="Caretta caretta">CC – Caretta caretta</option>
+                            <option value="Lepidochelys olivacea">LO - Lepidochelys olivacea</option>
+                            <option value="Dermocheys Coriacea">DC – Dermocheys Coriacea</option>
+                        </select>
+                    </div>
+<!-- tipo de registro -->
+                    <div  class="div_input">
+                        <label  class="label">Tipo de Registro</label>
+                        <select class = "inputDadosTartaruga"  name="tipodeRegistro" id="inputTR">
+                            <option value="Com Desova">Com Desova</option>
+                            <option value="Sem Desova">Sem Desova</option>
+                            <option value="Meia Lua">Meia Lua</option>
+                            <option value="Não Identificado">Não Identificado</option>
+                        </select>
+                    </div>
+<!-- sexo -->
+                    <div  class="div_input">
+                        <label  class="label">Sexo</label>
+                        <select class = "inputDadosTartaruga" id="inputSE" name="sexo">
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                        </select>
+                    </div>
+<!-- CCC -->
+                    <div class="ccc_ccl">
+                        <div id="ccc">
+                            <label  class="label" >CCC</label>
+                            <input class = "inputDadosTartaruga" type="text" id="inputCCC" name="ccc" placeholder="Comprimento">
+                        </div>
+
+                        <div id="ccl">
+                            <label  class="label">LCC</label>
+                            <input class = "inputDadosTartaruga" id="inputCCL" type="text" name="lcc" placeholder="Largura">
+                        </div>
+                    </div>
+                    <p class="alerta_registro" id="alerta_erro">
+                        {{alerta_erro}}
+                    </p>
+                    
+                    <input class="btn" type="button" id="btn_continuar" value="Continuar">
+
+                    <a class="link" id ="a_novadesova" href="/novaeclosao">Registrar Futura Eclosão</a>
+                </div>
+            </div>
+                    
+
+                
+
+                
+
+            <div class="sessao" id="segunda_sessao">
+                
+
+                <div class="div_gerenciartartaruga">
+                    <h1 class="h1_titulo">Dados da Localização</h1>
+<!--Municipio-->
+                    <div class="div_input">
+                        <label class="label">Município</label>
+                        <select class="inputDadosTartaruga" name="municipio" id="inputMU">
+                            <option value="Maxaranguape">Maxaranguape</option>
+                            <option value="Ceará Mirim">Ceará Mirim</option>
+                        </select>
+                    </div>
+<!-- Praia -->
+                    <div class="div_input">
+                        <label class="label">Praia</label>
+                        <select name="praia" id="inputPR" class="inputDadosTartaruga">
+                            <option value="Jacumã">Jacumã - JCM</option>
+                            <option value="Porto-Mirim">Porto-Mirim - PMR</option>
+                            <option value="Muriú">Muriú - MRU</option>
+                            <option value="Barra de Maxaranguape">Barra de Maxaranguape - BMX</option>
+                            <option value="Cabo de São Roque">Cabo de São Roque - CSR</option>
+                            <option value="Caraúbas">Caraúbas - CRB</option>
+                            <option value="Maxaranguape">Maracajaú – MRJ</option>
+                        </select>
+                    </div>
+<!-- Latitude -->
+                    <div class="div_input">
+                        <label class="label">Latitude</label>
+                        <input class="inputDadosTartaruga" type="text" name="latitude" placeholder="Latitude">
+                    </div>
+    <!-- Longitude -->
+                    <div class="div_input">
+                        <label class="label">Longitude</label>
+                        <input class="inputDadosTartaruga" type="text" name="longitude" placeholder="Longitude">
+                    </div>   
+    <!-- Data e Hora -->
+                    <div class="data_hora">
+                        <div id="ccc">
+                            <label class="label">Data</label>
+                            <input  type="date" class="inputDadosTartaruga" id="inputData" name="data">
+                        </div>
+
+                        <div id="ccl">
+                            <label class="label">Hora</label>
+                            <input type="time"  id="inputHora" class="inputDadosTartaruga" name="hora">
+                        </div>
+                    </div>
+                    <p class="alerta_registro" id="alerta_erro">
+                        {{alerta_erro}}
+                    </p>
+                    <input class="btn" type="submit" value="Concluir">
+                    <a class="link" id="btn_voltar">Voltar</a>                
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <script src="{{ url_for('static',filename='js/principal.js' )}}"></script>
+</body>
+</html>
