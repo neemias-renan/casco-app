@@ -8,6 +8,9 @@ from app.models.tables import Equipe, User, Tartaruga,Nova_Desova
 from app.models.forms import LoginForm,CadastroLiderForm,CadastroPesquisadorForm, CadastroEquipeForm
 from operator import itemgetter, attrgetter
 
+import random
+import string
+
 @lm.user_loader
 def load_user(id):
     return User.query.filter_by(id = id).first()
@@ -44,7 +47,16 @@ def principal():
     d = ''
     id_equipe = current_user.equipe_id
     nome_equipe = Equipe.query.filter_by(id = id_equipe).first()
-    equipe = nome_equipe
+    if nome_equipe == None:
+        equipe = ""
+        codigo = ""
+    else:
+        if current_user.tipo == "pesquisador":
+            equipe = ""
+            codigo = ""
+        else:
+            equipe = nome_equipe.nomedaequipe
+            codigo = "Código de acesso: "+nome_equipe.codigodaequipe
 
 
 
@@ -67,7 +79,7 @@ def principal():
     d = alertas2
     
     
-    return render_template("init.html",a = a, d = d,equipe = equipe)
+    return render_template("init.html",a = a, d = d,equipe = equipe,codigo=codigo)
 
 
 @app.route("/registrarTartaruga",methods = ["GET","POST"])
@@ -201,27 +213,36 @@ def registrarPesquisador():
     form = CadastroPesquisadorForm()
     alerta_email = ""
     alerta_senha = ""
+    alerta_codigo = ""
     if form.validate_on_submit():
         if form.senha.data == form.confirmarSenha.data:
             if request.method == 'POST':
-                nome_da_equipe = Equipe.query.filter_by(nomedaequipe = form.nomeequipe.data).first()
-            
-                equipe = nome_da_equipe.id
-                print(nome_da_equipe.id)
-                pesquisador = User(form.nome.data, form.email.data, form.senha.data,'pesquisador', equipes = equipe)
+                codigoInput = Equipe.query.filter_by(codigodaequipe=form.codigoequipe.data).first()
+
+
+
+                if codigoInput == None:
+                    alerta_codigo = "Código da equipe não existe"
+                else:
+                    try:
+                        email = User.query.filter_by(email=form.email.data).first()
+                        if email.email == form.email.data:
+                            alerta_email = "o email adicionado já existe."
+                    except AttributeError:
+                        pesquisador = User(form.nome.data, form.email.data, form.senha.data,'pesquisador',equipes='')
+                        # Aqui não está sendo passado o id da equipe, FUTURAMENTE será resolvido.
+                        db.session.add(pesquisador)
+                        db.session.commit()
+                        return redirect(url_for('index'))   
+
+
+                
                 # TÁ DANDO ERROOOOOOOOOOOOO
                
-                try:
-                    email = User.query.filter_by(email=form.email.data).first()
-                    if email.email == form.email.data:
-                        alerta_email = "o email adicionado já existe."
-                except AttributeError:
-                    db.session.add(pesquisador)
-                    db.session.commit()
-                    return redirect(url_for('index'))                
+                             
         else:
             alerta_senha = "As senhas não coincidem"
-    return render_template('cadastroP.html',form = form, alerta_senha = alerta_senha, alerta_email = alerta_email)
+    return render_template('cadastroP.html',form = form, alerta_senha = alerta_senha, alerta_email = alerta_email,alerta_codigo=alerta_codigo)
 
 
 @app.route("/registrarlider", methods = ["GET","POST"])
@@ -230,15 +251,20 @@ def registrarLider():
     alerta_email = ""
     alerta_senha = ""
     alerta_equipe = ""
+    letras = string.ascii_uppercase
+
+    
     equipeform = CadastroEquipeForm()
     
     if form.validate_on_submit():
         if form.senha.data == form.confirmarSenha.data:
             if request.method == 'POST':
-                equipe = Equipe(equipeform.nomedaequipe.data)
+                codigo = ''.join(random.choice(letras) for _ in range(10))
+                
+                equipe = Equipe(equipeform.nomedaequipe.data,codigo)
                 lider = User(form.nome.data, form.email.data, form.senha.data,'lider',equipes=equipe)
 
-                 # teste do email.
+                # teste do email.
                 try:
                     email = User.query.filter_by(email=form.email.data).first()
                     NomeDaEquipe = Equipe.query.filter_by(nomedaequipe= equipe.nomedaequipe).first()

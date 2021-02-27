@@ -8,3 +8,6 @@ $("#add_senha").click(function(){
 $("#add_nomedaequipe").click(function(){
     $("#alert_equipe").hide()
 });
+$("#add_codigo").click(function(){
+    $("#alert_codigo").hide()
+});

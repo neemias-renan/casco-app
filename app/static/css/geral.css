@@ -127,6 +127,12 @@ ul{
 li{
     color: black;
 }
+.nome_equipe_class{
+    margin-bottom: 0;
+}
+.codigo_equipe_class{
+    margin:0;
+}
 .icon_fecharMenu{
     margin-top: 2em;
     margin-left: 2em;

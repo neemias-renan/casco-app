@@ -35,9 +35,13 @@
             </div>
 
             <div class="div_input">
-              <label class="label" for="nomeequipe">Nome da Sua Equipe</label>
-              {{form.nomeequipe(class = "formInput", placeholder="Nome da sua equipe")}}
+              <label class="label" for="codigoequipe">Código da Equipe</label>
+              {{form.codigoequipe(class = "formInput",id="add_codigo",placeholder="Digite o código da sua equipe")}}
+              <p class="alerta_registro" id="alert_codigo">
+                {{alerta_codigo}}
+              </p>
             </div>
+            
 
             <div class="div_input">
               <label class="label" for="senha">Senha</label> 

@@ -15,7 +15,7 @@ class User(db.Model):
     email = db.Column(db.String, unique = True)
     senha = db.Column(db.String)
     tipo = db.Column(db.String(11))
-    equipe_id = db.Column(db.Integer, db.ForeignKey('equipes.id'),nullable=False)
+    equipe_id = db.Column(db.Integer, db.ForeignKey('equipes.id'))
     equipes = db.relationship("Equipe",backref=db.backref("users",lazy=True))
 
     
@@ -39,7 +39,12 @@ class User(db.Model):
         self.email = email
         self.senha = senha
         self.tipo = tipo
-        self.equipes = equipes
+       
+        if tipo == "pesquisador":
+            self.equipes = None
+        else:
+            self.equipes = equipes
+        
 
     
     def __repr__(self):
@@ -49,10 +54,14 @@ class Equipe(db.Model):
     __tablename__ = "equipes"
     id = db.Column(db.Integer, primary_key = True)
     nomedaequipe = db.Column(db.String, unique = True)
+    codigodaequipe = db.Column(db.String, unique = True)
+    # users = db.relationship("User",backref=db.backref("equipe",lazy=True))
     
 
-    def __init__(self, nomedaequipe):
+    def __init__(self, nomedaequipe,codigodaequipe):
         self.nomedaequipe = nomedaequipe
+        self.codigodaequipe = codigodaequipe
+        
 
      
     def __repr__(self):

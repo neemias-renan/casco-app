@@ -15,7 +15,7 @@ class CadastroLiderForm(FlaskForm):
 class CadastroPesquisadorForm(FlaskForm):
     nome = StringField("nome", validators = [DataRequired()])
     email = StringField("email", validators = [DataRequired()])
-    nomeequipe = StringField("nomeequipe", validators = [DataRequired()])
+    codigoequipe = StringField("codigoequipe", validators = [DataRequired()])
     senha = PasswordField("senha", validators = [DataRequired()])
     confirmarSenha = PasswordField("confirmarSenha", validators = [DataRequired()])
 
