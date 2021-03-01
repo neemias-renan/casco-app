@@ -26,22 +26,23 @@ def index():
             user = User.query.filter_by(email = form.email.data).first()
             if user.email == None:
                 alerta_erro = "Há algo de errado em seus dados."
+                print("erro lugar 1")
     
             if user and user.senha == form.senha.data:
                 login_user(user)
-                return redirect(url_for('principal'))
+                return redirect(url_for('inicio'))
             else:
                 alerta_erro = "Há algo de errado em seus dados."
+                print("erro lugar 2")
         except:
             alerta_erro = "Há algo de errado em seus dados."
+            print("aqui é o erro")
     return render_template('login.html',form = form,alerta_erro = alerta_erro)
 
 
-@app.route("/principal" , methods = ["GET", "POST"])
+@app.route("/inicio" , methods = ["GET", "POST"])
 @login_required
-def principal():
-    
-
+def inicio():
     # **********************************************
     a = ''
     d = ''
@@ -52,20 +53,16 @@ def principal():
         codigo = ""
     else:
         if current_user.tipo == "pesquisador":
-            equipe = ""
+            equipe =  nome_equipe.nomedaequipe
             codigo = ""
         else:
             equipe = nome_equipe.nomedaequipe
             codigo = "Código de acesso: "+nome_equipe.codigodaequipe
-
-
-
     hoje = str(date.today())
     novoHoje = hoje.split("-")
     ano3 = int(novoHoje[0])
     mes3 = int(novoHoje[1])
     dia3 = int(novoHoje[2])
-
     diaatual = str("%r/%r/%r" %('%02d' % dia3,'%02d' % mes3, ano3))
     eliminar = "'"
     for i in range(0,len(eliminar)):
@@ -73,13 +70,74 @@ def principal():
     # Pensar como continuar a exibir esse alerta mesmo depois do dia
     alertas = Tartaruga.query.filter_by(datadoalerta = diaatual).all()
     alertas2 = Nova_Desova.query.filter_by(datadoalerta = diaatual).all()
-
-    
     a = alertas
     d = alertas2
+    return render_template('inicio.html',a = a, d = d,equipe = equipe,codigo=codigo)
+
+
+@app.route("/editarperfil",methods=["GET","POST"])
+@login_required
+def editarperfil():
+    #     identificador = request.form['identificador']
+    user = User.query.filter_by(id = current_user.id).first()
+
+    if request.method == 'POST':
+        user.nome = request.form["novoNome"]
+        user.email = request.form["novoEmail"]
+
+        if request.form['senhaAtual'] == user.senha:
+            user.senha = request.form["senhaNova"]
+        db.session.commit()
+        print("ok")
+        
+
+    return render_template('editarperfil.html')
+
+
+@app.route("/gerenciarequipe")
+@login_required
+def gerenciarequipe():
+    membros = ""
+    equipe_nome = ""
+    lider_nome = ""
+    id_equipe = current_user.equipe_id
+    nome_equipe = Equipe.query.filter_by(id = id_equipe).first()
+
     
-    
-    return render_template("init.html",a = a, d = d,equipe = equipe,codigo=codigo)
+
+    lider = User.query.filter_by(equipe_id = id_equipe).first()
+    lider_nome = lider.nome
+
+    todaequipe = User.query.filter_by(equipe_id = id_equipe).all()   
+    equipe_nome = nome_equipe.nomedaequipe
+    del todaequipe[0]
+    membros = todaequipe
+
+
+    return render_template('gerenciarequipe.html',membros = membros, equipe_nome = equipe_nome,lider_nome = lider_nome)
+
+@app.route("/historico", methods = ["GET","POST"])
+@login_required
+def historico():
+    t = ''
+    g = ''
+    if request.method == 'POST':
+        identificador = request.form['identificador']
+        busca = Tartaruga.query.filter_by(anilha = identificador).all()
+
+        ordenar = sorted(busca,key=attrgetter('data'), reverse=True)
+        if busca == []:
+            todos = Tartaruga.query.all()
+            ordenarTodos = sorted(todos,key=attrgetter('data'), reverse=True)
+            g = ordenarTodos
+        else:
+            t = ordenar
+            g = ''
+    else:
+        todos = Tartaruga.query.all()
+        ordenarTodos = sorted(todos,key=attrgetter('data'), reverse=True)
+        g = ordenarTodos
+    return render_template('historico.html', t = t, g = g)
 
 
 @app.route("/registrarTartaruga",methods = ["GET","POST"])
@@ -129,12 +187,13 @@ def registrarTartaruga():
             tartaruga = Tartaruga(anilha,informacoes,especie,tipo_de_registro,sexo,ccc,lcc,municipio,praia,latitude,longitude,data,hora,datadoalerta)
             db.session.add(tartaruga)
             db.session.commit()
-            return redirect(url_for('principal'))
+            return redirect(url_for('inicio'))
         except:
             alerta_erro = "Há dados faltando, insira novamente."
     return render_template("registrarTartaruga.html",alerta_erro = alerta_erro)
 
-@app.route("/novaeclosao" , methods = ["GET", "POST"])
+
+@app.route("/novaEclosao" , methods = ["GET", "POST"])
 @login_required
 def novaeclosao():
     alerta_erro = ""
@@ -179,34 +238,18 @@ def novaeclosao():
     return render_template("novaeclosao.html",alerta_erro = alerta_erro)
 
 
-@app.route("/historico", methods = ["GET","POST"])
+@app.route("/sobre")
 @login_required
-def historico():
-    t = ''
-    g = ''
-    if request.method == 'POST':
-        identificador = request.form['identificador']
-        busca = Tartaruga.query.filter_by(anilha = identificador).all()
+def sobre():
+    return render_template("sobre.html")
 
-        ordenar = sorted(busca,key=attrgetter('data'), reverse=True)
-        if busca == []:
-            todos = Tartaruga.query.all()
-            ordenarTodos = sorted(todos,key=attrgetter('data'), reverse=True)
-            g = ordenarTodos
-        else:
-            t = ordenar
-            g = ''
-    else:
-        todos = Tartaruga.query.all()
-        ordenarTodos = sorted(todos,key=attrgetter('data'), reverse=True)
-        g = ordenarTodos
-    return render_template('historico.html', t = t, g = g)
 
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
 
 @app.route("/registrarpesquisador", methods = ["GET","POST"])
 def registrarPesquisador():
@@ -232,6 +275,8 @@ def registrarPesquisador():
                         pesquisador = User(form.nome.data, form.email.data, form.senha.data,'pesquisador',equipes='')
                         # Aqui não está sendo passado o id da equipe, FUTURAMENTE será resolvido.
                         db.session.add(pesquisador)
+                        teste = User.query.filter_by(email = form.email.data).first()
+                        teste.equipe_id = codigoInput.id
                         db.session.commit()
                         return redirect(url_for('index'))   
 
@@ -282,31 +327,11 @@ def registrarLider():
             alerta_senha = "As senhas não coincidem"
     return render_template('cadastroL.html',form = form, equipeform = equipeform, alerta_senha = alerta_senha, alerta_email = alerta_email,alerta_equipe = alerta_equipe)
 
-@app.route("/configuracoes",methods=["GET","POST"])
-@login_required
-def configuracoes():
-    #     identificador = request.form['identificador']
-    user = User.query.filter_by(id = current_user.id).first()
-
-    if request.method == 'POST':
-        user.nome = request.form["novoNome"]
-        user.email = request.form["novoEmail"]
-
-        if request.form['senhaAtual'] == user.senha:
-            user.senha = request.form["senhaNova"]
-        db.session.commit()
-        print("ok")
-        
-
-    return render_template('configuracoes.html')
 
 @app.route("/recuperarsenha",methods=["GET","POST"])
 def recuperarsenha():
     return render_template('recuperarsenha.html')
 
-@app.route("/sobre")
-def sobre():
-    return render_template('sobre.html')
 
 
 @app.route("/apagar/<id>")
@@ -317,12 +342,14 @@ def apagar(id):
     db.session.commit()
     return redirect(url_for('historico'))  
 
+
 @app.route("/teste/<info>")
 @app.route("/teste",defaults = {"info":None})
 @login_required
 def teste(info):
-    print('%02d' % 19)
+    # print('%02d' % 19)
+    
     # i = Tartaruga.query.filter_by(id="1").first()
     # db.session.delete(i)
-    # db.session.commit()
+    db.session.commit()
     return "ok"

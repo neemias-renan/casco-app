@@ -22,6 +22,5 @@
 function btn_abrir(id_div){
     $(id_div).show()
     // $(".visualizar_notificacao").show()
-    $(".container").hide()
-
+    $("#inicio-section").hide()
 }

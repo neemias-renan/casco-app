@@ -1,94 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Casco</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
-    <div class="Menu_Tela">
-        <nav class = "menu">
-            <svg class="icon_fecharMenu"width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M27 9L9 27" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M9 9L27 27" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-                
-                
-            <ul id = "menu_links">
-                <a class="botao" href="/principal">
-                    <li class="li_menu">
-                        <p id="li_Inicio">Início</p>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>                  
-                    </li>
-                </a>
-                <a class="botao" href="/registrarTartaruga">
-                    <li class="li_menu">
-                        <p id="li_registrarTartaruga">Registrar Tartaruga</p>
-                        
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>   
-                    </li>
-                </a>
+{% extends 'base.html' %}
 
-                <a class="botao" href="/historico">
-                    <li class="li_menu">
-                        <p id="li_Historico">Histórico</p>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </li>
-                </a>                   
-                <a class="botao" href="/gerenciarequipe">
-                    <li class="li_menu">
-                        <p id="li_gerenciarEquipe">Gerenciar Equipe</p>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </li>
-                </a> 
-                <a class="botao" href="/configuracoes">
-                    <li class="li_menu">
-                        <p id="li_editarPerfil">Editar Perfil</p>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </li>
-                </a>
-                <a class="botao" href="/sobre">
-                    <li class="li_menu">
-                        <p id="li_sobre">Sobre Nós</p>
-                        <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7 13L1 7L7 1" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </li>
-                </a>
-                <a class="botao" href="/logout">
-                    <li class="li_menu">
-                        <p id="li_sair">Sair</p>
-                    </li>
-                </a>  
-
-            </ul>
-        </nav>
-    </div>
-
-    <div  class="cabecalhoPrincipal">
-        <h1 id="titulo_casco">Casco</h1>
-        <image id="logoPrincipal" src="{{ url_for('static',filename='images/tartaruga.png' )}}"></image>
-    </div>
-
-    <svg id ="icon_abrirMenu" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4.5 18H31.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M4.5 9H31.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M4.5 27H31.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-</body>
-</html>
+{% block content %}
+<div class="container margin-top">
+    <section>
+        <h1>Projeto Casco</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, repellat accusamus perferendis voluptatem beatae corporis quos asperiores repudiandae dolores dolor aspernatur natus culpa sint inventore laborum. Saepe at consequuntur quia.</p>
+        <h3>Desenvolvedores</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio consequuntur nisi explicabo! Vero, illo fuga iure nemo mollitia officia cumque, laudantium ipsam quia facilis non enim exercitationem odit minus blanditiis?</p>
+    </section>
+</div>
+{% endblock %}
+    

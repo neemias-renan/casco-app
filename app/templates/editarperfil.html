@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container margin-top">
+    <section class="pagina_de_registro">
+        <div class="titulo_editarPerfil">
+            <h2 id="h2_conf">{{current_user.nome}}</h2>
+            <p id="sub">Alterar Dados</p>
+        </div>
+        
+        <form class="form" action="" method="POST">
+            <div class="div_input">
+                <label class="lb1" id="lb_blue1" for="nome">Nome</label>
+                <input class="formInputEditarPerfil" type="text" name="novoNome" id="nome" placeholder="{{current_user.nome}}" value="{{current_user.nome}}">
+            </div>
+
+            <div class="div_input">
+                <label class="lb1"  id="lb_blue2"for="email">Email</label>
+                <input class="formInputEditarPerfil" type="email" name="novoEmail" id="email" placeholder="{{current_user.email}}" value="{{current_user.email}}">
+            </div>
+
+            <div class="div_input">
+                <label class="lb2" id="lb_blue3" for="senha">Senha Atual</label>
+                <input class="formInputEditarPerfil" type="password" name="senhaAtual" id="senhaAtual" autocomplete="new-password">
+            </div>
+
+            <div class="div_input">
+                <label class="lb2" id="lb_blue4" for="senhaNova">Nova Senha</label>
+                <input class="formInputEditarPerfil" type="password" name="senhaNova" id="senhaNova" autocomplete="new-password">
+            </div>
+
+            <button class="btn" type="submit">Salvar</button>
+        </form>
+    </section>
+</div>
+{% endblock %}
