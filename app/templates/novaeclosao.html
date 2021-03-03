@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container margin-top">
+<div class="container margin-top-min">
     <form action="" method="POST">   
         <div class="sessaoEclosao" id="primeira_sessao">
             <div class="div_gerenciartartaruga">
-                <h1 class="h1_titulo">Dados da Localização</h1>
+                <h2 class="h1_titulo">Dados da Localização</h2>
                 <p id="p_info">Você deve cadastrar um futura eclosão quando</br> não  há dados sobre a tartaruga geradora.</p> 
 <!--Municipio-->
-                <div class="div_input">
+                <div class="div_input_tartaruga">
                     <label class="label">Município</label>
                     <select class="inputDadosTartaruga" name="municipio" id="inputMU">
                         <option value="Maxaranguape">Maxaranguape</option>
@@ -16,7 +16,7 @@
                     </select>
                 </div>
 <!-- Praia -->
-                <div class="div_input">
+                <div class="div_input_tartaruga">
                     <label class="label">Praia</label>
                     <select name="praia" id="inputPR" class="inputDadosTartaruga">
                         <option value="Jacumã">Jacumã - JCM</option>
@@ -29,12 +29,13 @@
                     </select>
                 </div>
 <!-- Latitude -->
-                <div class="div_input">
+                <div class="div_input_tartaruga">
+                    <div class="div_input">
                     <label class="label">Latitude</label>
                     <input class="inputDadosTartaruga" type="text" name="latitude" placeholder="Latitude">
                 </div>
 <!-- Longitude -->
-                <div class="div_input">
+                <div class="div_input_tartaruga">
                     <label class="label">Longitude</label>
                     <input class="inputDadosTartaruga" type="text" name="longitude" placeholder="Longitude">
                 </div>   
@@ -53,7 +54,7 @@
                 <p class="alerta_registro" id="alerta_erro">
                     {{alerta_erro}}
                 </p>
-                <input class="btn" type="submit" value="Concluir">
+                <input class="btn_salvar" type="submit" value="Concluir">
             </div>
         </div>
     </form>

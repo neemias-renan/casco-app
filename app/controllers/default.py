@@ -78,23 +78,28 @@ def inicio():
 @app.route("/editarperfil",methods=["GET","POST"])
 @login_required
 def editarperfil():
-    #     identificador = request.form['identificador']
     user = User.query.filter_by(id = current_user.id).first()
-
+    alerta_erro = ''
     if request.method == 'POST':
         user.nome = request.form["novoNome"]
         user.email = request.form["novoEmail"]
 
         if request.form['senhaAtual'] == user.senha:
             user.senha = request.form["senhaNova"]
-        db.session.commit()
-        print("ok")
+            db.session.commit()
+            print("Foi atualizado.")
+        elif request.form['senhaAtual'] == '':
+            alerta_erro = ""
+            print('está vazio')
+        else:
+            alerta_erro = "As senhas não coincidem"
+            print('erro')
         
 
-    return render_template('editarperfil.html')
+    return render_template('editarperfil.html',alerta_erro = alerta_erro)
 
 
-@app.route("/gerenciarequipe")
+@app.route("/gerenciarequipe",methods=["GET","POST"])
 @login_required
 def gerenciarequipe():
     membros = ""
@@ -102,8 +107,6 @@ def gerenciarequipe():
     lider_nome = ""
     id_equipe = current_user.equipe_id
     nome_equipe = Equipe.query.filter_by(id = id_equipe).first()
-
-    
 
     lider = User.query.filter_by(equipe_id = id_equipe).first()
     lider_nome = lider.nome
@@ -113,31 +116,39 @@ def gerenciarequipe():
     del todaequipe[0]
     membros = todaequipe
 
+    if request.method == 'POST':
+        nome_equipe.nomedaequipe = request.form['novoNomedaEquipe']
+        db.session.commit()
+        return redirect(url_for('gerenciarequipe'))
+        
+
 
     return render_template('gerenciarequipe.html',membros = membros, equipe_nome = equipe_nome,lider_nome = lider_nome)
 
 @app.route("/historico", methods = ["GET","POST"])
 @login_required
 def historico():
-    t = ''
-    g = ''
+    tartarugas_dados = ''
+    alerta_erro = ''
     if request.method == 'POST':
         identificador = request.form['identificador']
-        busca = Tartaruga.query.filter_by(anilha = identificador).all()
+        buscar_anilha = Tartaruga.query.filter_by(anilha = identificador).all()
 
-        ordenar = sorted(busca,key=attrgetter('data'), reverse=True)
-        if busca == []:
+        ordenarAnilhas = sorted(buscar_anilha,key=attrgetter('data'))
+        if buscar_anilha == []:
+            alerta_erro = "A anilha procurada não foi achada."
             todos = Tartaruga.query.all()
-            ordenarTodos = sorted(todos,key=attrgetter('data'), reverse=True)
-            g = ordenarTodos
+            ordenarTodos1 = sorted(todos,key=attrgetter('data'))
+            tartarugas_dados = ordenarTodos1
         else:
-            t = ordenar
-            g = ''
+            tartarugas_dados = ordenarAnilhas
+
     else:
         todos = Tartaruga.query.all()
-        ordenarTodos = sorted(todos,key=attrgetter('data'), reverse=True)
-        g = ordenarTodos
-    return render_template('historico.html', t = t, g = g)
+        ordenarTodos2 = sorted(todos,key=attrgetter('data'))
+        tartarugas_dados = ordenarTodos2
+        print("tá aqui")
+    return render_template('historico.html', t = tartarugas_dados, alerta_erro = alerta_erro)
 
 
 @app.route("/registrarTartaruga",methods = ["GET","POST"])
@@ -185,6 +196,7 @@ def registrarTartaruga():
             datadoalerta = str("%s/%s/%s"%('%02d' %dia2,'%02d' %mes2,'%02d' %ano2))
 
             tartaruga = Tartaruga(anilha,informacoes,especie,tipo_de_registro,sexo,ccc,lcc,municipio,praia,latitude,longitude,data,hora,datadoalerta)
+
             db.session.add(tartaruga)
             db.session.commit()
             return redirect(url_for('inicio'))
@@ -273,16 +285,11 @@ def registrarPesquisador():
                             alerta_email = "o email adicionado já existe."
                     except AttributeError:
                         pesquisador = User(form.nome.data, form.email.data, form.senha.data,'pesquisador',equipes='')
-                        # Aqui não está sendo passado o id da equipe, FUTURAMENTE será resolvido.
                         db.session.add(pesquisador)
                         teste = User.query.filter_by(email = form.email.data).first()
                         teste.equipe_id = codigoInput.id
                         db.session.commit()
                         return redirect(url_for('index'))   
-
-
-                
-                # TÁ DANDO ERROOOOOOOOOOOOO
                
                              
         else:
@@ -334,14 +341,22 @@ def recuperarsenha():
 
 
 
-@app.route("/apagar/<id>")
+@app.route("/apagar_tartaruga/<id>")
 @login_required
-def apagar(id):
+def apagar_tartaruga(id):
     tartaruga = Tartaruga.query.filter_by(id = id).first()
     db.session.delete(tartaruga)
     db.session.commit()
     return redirect(url_for('historico'))  
 
+
+@app.route("/apagar_user/<id>")
+@login_required
+def apagar_user(id):
+    user = User.query.filter_by(id = id).first()
+    db.session.delete(user)
+    db.session.commit()
+    return redirect(url_for('gerenciarequipe')) 
 
 @app.route("/teste/<info>")
 @app.route("/teste",defaults = {"info":None})

@@ -7,7 +7,7 @@
 
                 <h2 class="title">Olá,<b> {{current_user.nome}}</b></h2>
 
-                <div>    
+                <div class="div_titulo">    
                     <h2><b>{{equipe}}</b></h2>
                     <p>{{codigo}}</p>
                 </div>
@@ -19,7 +19,7 @@
                             {% for a in a %}
                                 <li class="li">
                                     <div class="div_aviso">
-                                        <h3 class="aviso_h3">Período de Nascimento</h3>
+                                        <h5 class="aviso_h5">Período de Nascimento</h5>
                                         <p class="aviso_p">{{a.data}} - {{a.praia}}</p>
                                         <input class="btn_ver" type="button" value="ver" onclick="btn_abrir(div{{a.id}})">
                                     </div> 
@@ -29,7 +29,7 @@
                             {% for d in d %}
                                 <li class="li">
                                     <div class="div_aviso">
-                                        <h3 class="h3">Período de Nascimento</h3>
+                                        <h5 class="h5">Período de Nascimento</h5>
                                         <p class="p">{{d.data}} - {{d.praia}}</p>
                                         <input class="btn_ver" type="button" value="ver" onclick = "btn_abrir(div{{d.id}})">
                                     </div>
@@ -44,7 +44,7 @@
         <section class="visualizar_notificacao">
             {% for a in a%}
                     <div id="div{{a.id}}" class="div_detalhes">
-                        <a href="/inicio">
+                        <a id="btn_fechar">
                             <svg class="svg_voltar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M28.5 18H7.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M18 28.5L7.5 18L18 7.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -56,7 +56,7 @@
                         <label class="label_dados">{{a.praia}}</label><br><br>
                         <label class="label">Espécie:</label>
                         <label class="label_dados">{{a.especie}}</label><br>      
-                        <a class="btn_maps"href="https://www.google.com.br/maps/search/{{a.latitude}},{{a.longitude}}">
+                        <a class="btn_maps" href="https://www.google.com.br/maps/search/{{a.latitude}},{{a.longitude}}" target="_blank">
                             <input class="btn_azul" type="button" value="Ver no Mapa">
                         </a>
                     </div>
@@ -64,7 +64,7 @@
     
             {% for d in d%}
                     <div id="div{{d.id}}" class="div_detalhes">
-                        <a href="/inicio">
+                        <a id="btn_fechar">
                             <svg class="svg_voltar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M28.5 18H7.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M18 28.5L7.5 18L18 7.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -76,7 +76,7 @@
                         <label class="label_dados">{{d.praia}}</label><br>
                         <label class="label">Espécie:</label><br>
                         <label class="label_dados">{{d.especie}}</label><br>      
-                        <a class="btn_maps" href="https://www.google.com.br/maps/search/{{d.latitude}},{{d.longitude}}"><input class="btn_azul" type="button" value="Ver no Mapa"></a>
+                        <a class="btn_maps" href="https://www.google.com.br/maps/search/{{d.latitude}},{{d.longitude}}" target="_blank"><input class="btn_azul" type="button" value="Ver no Mapa"></a>
                     </div>
             {% endfor%}
         </section>

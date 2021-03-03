@@ -75,7 +75,6 @@ class Tartaruga(db.Model):
     informacoes = db.Column(db.Text)
     especie = db.Column(db.String)
     tipo_de_registro = db.Column(db.String)
-    monitoramento = db.Column(db.String(3))
     sexo = db.Column(db.String(2))
     ccc = db.Column(db.String(5))
     lcc = db.Column(db.String(5))
@@ -87,10 +86,6 @@ class Tartaruga(db.Model):
     hora = db.Column(db.String)
 
     datadoalerta = db.Column(db.String)
-    
-    # equipe_id = db.Column(db.Integer, db.ForeignKey('equipes.id'),unique = True)
-
-    # equipe = db.relationship('Equipe',foreign_keys = equipe_id)
 
     def __init__(self, anilha,informacoes,especie,tipo_de_registro, sexo,ccc,lcc,municipio,praia,latitude,longitude,data,hora,datadoalerta):
         self.anilha = anilha
@@ -106,8 +101,14 @@ class Tartaruga(db.Model):
         self.longitude = longitude
         self.data = data
         self.hora = hora
-        self.datadoalerta = datadoalerta
-        # self.equipe_id = equipe_id
+
+        if sexo == "Masculino":
+            self.datadoalerta = None
+        else: 
+            if tipo_de_registro == "Com Desova":
+                self.datadoalerta = datadoalerta
+            else:
+                self.datadoalerta = None
     
     def __repr__(self):
         return "Anilha = '%s', Informações de Registro = '%s', Espécie = '%s', Tipo de Registro = '%s', Sexo = '%s', CCC = '%s', LCC = '%s', Município = '%s', Praia = '%s', Latitude = '%s', Longitude = '%s', Data do registro = '%s', Hora do registro = '%s'" % (self.anilha, self.informacoes, self.especie, self.tipo_de_registro, self.sexo, self.ccc, self.lcc, self.municipio, self.praia, self.latitude, self.longitude, self.data, self.hora)

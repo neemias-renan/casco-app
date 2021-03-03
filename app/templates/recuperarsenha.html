@@ -1,34 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Casco</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
-    
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div  class="cabecalho">
-        <image id="logo" src="{{ url_for('static',filename='images/tartaruga.png' )}}">
-        <h1 id="titulo_casco">Casco</h1>
-      </div>
+{% extends 'baseInicio.html' %}
 
+{% block content %}
+<div class="container margin-top">
     <section id="recuperar_senha">
-        <form id = "form" action="" method="POST">
+        <div  class="cabecalho">
+            <image id="logo" src="{{ url_for('static',filename='images/tartaruga.png' )}}">
+            <h3 id="titulo_cabecalho">Casco</h3>
+        </div>
+
+        
+        <form id = "div_form" action="" method="POST">
             <h1 class="h1_recuperarSenha">Recuperar Senha</h1>
-            <p>Nós enviaremos sua senha para o seu email.</p>
+            <p class="p_recuperarsenha">Nós enviaremos sua senha para o seu email.</p>
 
-       
-            <label for="email" class="label">Email</label>
-            <input type="email" name="email" class="formInputEmail" placeholder="exemplo@email.com">
-
-            <input type="submit" class="btn" value="Recuperar">
+            <div class="div_input">
+                <input type="email" name="email" class="formInput" placeholder="exemplo@email.com">
+            </div>
+            
+            <input type="submit" class="btn margin-top-min" value="Recuperar">
         </form>
-        <a class="link" id="link1" href="/">Voltar ao Inicio</a>
+        <a class="link margin-top-min" id="link" href="/">Voltar ao Inicio</a>
+
     </section>
-    
-</body>
-</html>
+</div>
+{% endblock %}

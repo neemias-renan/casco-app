@@ -5,7 +5,7 @@
     <section class="pagina_de_registro">
         <div class="titulo_editarPerfil">
             <h2 id="h2_conf">{{current_user.nome}}</h2>
-            <p id="sub">Alterar Dados</p>
+            <p id="sub">Altere seus dados</p>
         </div>
         
         <form class="form" action="" method="POST">
@@ -19,17 +19,26 @@
                 <input class="formInputEditarPerfil" type="email" name="novoEmail" id="email" placeholder="{{current_user.email}}" value="{{current_user.email}}">
             </div>
 
-            <div class="div_input">
-                <label class="lb2" id="lb_blue3" for="senha">Senha Atual</label>
-                <input class="formInputEditarPerfil" type="password" name="senhaAtual" id="senhaAtual" autocomplete="new-password">
+            <div class="div_senha">
+                <div class="div_input">
+                    <label class="lb2" id="lb_blue3" for="senha">Senha Atual</label>
+                    <input class="formInputEditarPerfil" type="password" name="senhaAtual" id="senhaAtual" autocomplete="new-password">
+                </div>
+    
+                <div class="div_input">
+                    <label class="lb2" id="lb_blue4" for="senhaNova">Nova Senha</label>
+                    <input class="formInputEditarPerfil" type="password" name="senhaNova" id="senhaNova" autocomplete="new-password">
+                </div>
+                
+                <p class="alerta_registro central_position" id="alerta_erro">
+                    {{alerta_erro}}
+                </p>
             </div>
-
-            <div class="div_input">
-                <label class="lb2" id="lb_blue4" for="senhaNova">Nova Senha</label>
-                <input class="formInputEditarPerfil" type="password" name="senhaNova" id="senhaNova" autocomplete="new-password">
+            
+            <div class = "central_position">
+                <button class="btn_salvar" type="submit">Salvar</button>
             </div>
-
-            <button class="btn" type="submit">Salvar</button>
+            
         </form>
     </section>
 </div>

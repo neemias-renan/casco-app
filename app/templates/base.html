@@ -9,7 +9,6 @@
     <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/base.css' )}}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
@@ -25,24 +24,27 @@
 
         <!-- Sidebar  -->
         <nav id="sidebar">
+            <div  class="cabecalho">
+                <image id="logo" src="{{ url_for('static',filename='images/tartaruga.png' )}}">
+                <h3 id="titulo_cabecalho">Casco</h3>
+            </div>
             <ul class="list-unstyled components">
-                
-
                 <li>
                     <a href="/inicio">
                         <i class="fas fa-home"></i>
                         Inicio
                     </a>
-                </li>
-                <li>
                     <a href="/editarperfil">
                         <i class="fas fa-briefcase"></i>
                         Editar Perfil
                     </a>
-                    <a href="/gerenciarequipe">
-                        <i class="fas fa-briefcase"></i>
-                        Equipe
-                    </a>
+
+                    {% if current_user.tipo == "lider" %}
+                        <a href="/gerenciarequipe">
+                            <i class="fas fa-briefcase"></i>
+                            Equipe
+                        </a>
+                    {% endif %}
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-copy"></i>
                         Tartarugas
@@ -60,7 +62,7 @@
                     </ul>
                     <a href="/sobre">
                         <i class="fas fa-briefcase"></i>
-                        Sobre
+                        Sobre Nós
                     </a>
                     <a href="/logout">
                         <i class="fas fa-briefcase"></i>
@@ -93,7 +95,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="{{ url_for('static',filename='js/bootstrap.min.js' )}}"></script>
     <script src="{{ url_for('static',filename='js/base.js' )}}"></script>
-    <script src="{{ url_for('static',filename='js/principal.js' )}}"></script>
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/> -->
+    
 </body>
 </html>

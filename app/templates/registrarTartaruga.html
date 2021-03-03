@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container margin-top">
+<div class="container margin-top-min">
     <section class="registrartartaruga" id="registrarTartaruga">
         <form action="" method="POST">   
             <div class="sessao" id="primeira_sessao">
                 <div class="div_gerenciartartaruga" id="div_gerenciartartarugaID">
-                    <h1 class="h1_titulo">Dados das Tartarugas</h1>
+                    <h2
+                     class="h1_titulo">Dados das Tartarugas</h2>
 <!-- Número de anilha -->
-                    <div  class="div_input">
+                    <div  class="div_input_tartaruga">
                         <label class="label">Número de Identificação</label>
                         <input class = "inputDadosTartaruga" type="text" name="numerodaanilha" placeholder="Anilha">
                     </div>
 <!-- detalhamento -->
-                    <div  class="div_input">
+                    <div  class="div_input_tartaruga">
                         <label id = "detalhar"  class="label">Detalhamento</label>
                             <div id = "detalhes">
                                 <input type="radio" id="houvemanutencao" name="informacoes" value="Houve Manutenção" checked>
@@ -23,7 +24,7 @@
                             </div>
                     </div>
 <!-- espécie -->
-                    <div  class="div_input">
+                    <div  class="div_input_tartaruga">
                         <label  class="label" >Espécie da Tartaruga</label>
                         <select class = "inputDadosTartaruga"  name="especie" id="inputES">
                             <option value="Desconhecido">De – Desconhecido</option>
@@ -34,8 +35,16 @@
                             <option value="Dermocheys Coriacea">DC – Dermocheys Coriacea</option>
                         </select>
                     </div>
+<!-- sexo -->
+                    <div  class="div_input_tartaruga">
+                        <label  class="label">Sexo</label>
+                        <select class = "inputDadosTartaruga" id="inputSE" name="sexo">
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                        </select>
+                    </div>
 <!-- tipo de registro -->
-                    <div  class="div_input">
+                    <div  class="div_input_tartaruga">
                         <label  class="label">Tipo de Registro</label>
                         <select class = "inputDadosTartaruga"  name="tipodeRegistro" id="inputTR">
                             <option value="Com Desova">Com Desova</option>
@@ -43,15 +52,7 @@
                             <option value="Meia Lua">Meia Lua</option>
                             <option value="Não Identificado">Não Identificado</option>
                         </select>
-                    </div>
-<!-- sexo -->
-                    <div  class="div_input">
-                        <label  class="label">Sexo</label>
-                        <select class = "inputDadosTartaruga" id="inputSE" name="sexo">
-                            <option value="Masculino">Masculino</option>
-                            <option value="Feminino">Feminino</option>
-                        </select>
-                    </div>
+                    </div>    
 <!-- CCC -->
                     <div class="ccc_ccl">
                         <div id="ccc">
@@ -68,7 +69,7 @@
                         {{alerta_erro}}
                     </p>
                     
-                    <input class="btn" type="button" id="btn_continuar" value="Continuar">
+                    <input class="btn_salvar" type="button" id="btn_continuar" value="Continuar">
                 </div>
             </div>
                     
@@ -78,12 +79,17 @@
                 
 
             <div class="sessao" id="segunda_sessao">
-                
+                <a id = "btn_voltar_sessao">
+                    <svg class="svg_voltar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M28.5 18H7.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18 28.5L7.5 18L18 7.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
 
                 <div class="div_gerenciartartaruga">
                     <h1 class="h1_titulo">Dados da Localização</h1>
 <!--Municipio-->
-                    <div class="div_input">
+                    <div class="div_input_tartaruga">
                         <label class="label">Município</label>
                         <select class="inputDadosTartaruga" name="municipio" id="inputMU">
                             <option value="Maxaranguape">Maxaranguape</option>
@@ -91,7 +97,7 @@
                         </select>
                     </div>
 <!-- Praia -->
-                    <div class="div_input">
+                    <div class="div_input_tartaruga">
                         <label class="label">Praia</label>
                         <select name="praia" id="inputPR" class="inputDadosTartaruga">
                             <option value="Jacumã">Jacumã - JCM</option>
@@ -104,12 +110,12 @@
                         </select>
                     </div>
 <!-- Latitude -->
-                    <div class="div_input">
+                    <div class="div_input_tartaruga">
                         <label class="label">Latitude</label>
                         <input class="inputDadosTartaruga" type="text" name="latitude" placeholder="Latitude">
                     </div>
     <!-- Longitude -->
-                    <div class="div_input">
+                    <div class="div_input_tartaruga">
                         <label class="label">Longitude</label>
                         <input class="inputDadosTartaruga" type="text" name="longitude" placeholder="Longitude">
                     </div>   
@@ -128,8 +134,7 @@
                     <p class="alerta_registro" id="alerta_erro">
                         {{alerta_erro}}
                     </p>
-                    <input class="btn" type="submit" value="Concluir">
-                    <a class="link" id="btn_voltar">Voltar</a>                
+                    <input class="btn_salvar" type="submit" value="Concluir">         
                 </div>
             </div>
         </form>

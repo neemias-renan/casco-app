@@ -1,69 +1,70 @@
+{% extends 'baseInicio.html' %}
 
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Casco</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href="../static/css/geral.css"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  </head>
-  <body>
+{% block content %}
+<div class="container margin-top">
+  <section class = "pagina_de_registro">
     <div  class="cabecalho">
-      <image id="logo" src="{{ url_for('static',filename='images/tartaruga.png' )}}">
-      <h1 id="titulo_casco">Casco</h1>
+        <image id="logo" src="{{ url_for('static',filename='images/tartaruga.png' )}}">
+        <h3 id="titulo_cabecalho">Casco</h3>
     </div>
+        
+    <div>
+      <form id="div_form" action="" method="POST">
+        {{ form.csrf_token }}
+          <h2 class="h1_titulo">Faça parte da nossa</br> família de pesquisadores.</h2>
+          <div class="div_input">
+              {{form.nome(class = "formInput", placeholder="Nome")}}
+          </div>
 
-    <section class = "pagina_de_registro">
-        <div>
-          <form id="form" action="" method="POST">
-            {{ form.csrf_token }}
-            <h1 class="h1_titulo">Faça parte da nossa</br> família de pesquisadores.</h1>
-            <div class="div_input">
-              <label class="label" for="nome">Nome</label>
-              {{form.nome(class = "formInput", placeholder="Digite seu nome")}}
-            </div>
+          <div class="div_input">
+              {{form.email(class = "formInput", id="add_email", placeholder="Email")}}
+          </div>
 
-            <div class="div_input">
-              <label class="label" for="email">Email</label>
-              {{form.email(class = "formInput", id="add_email", placeholder="Digite seu email")}}
-              <p class="alerta_registro" id="alert_email">
-                {{alerta_email}}
-              </p>
-            </div>
+          <div class="div_input">
+              {{form.codigoequipe(class = "formInput",id="add_codigo",placeholder="Código da equipe")}}
+          </div>
 
-            <div class="div_input">
-              <label class="label" for="codigoequipe">Código da Equipe</label>
-              {{form.codigoequipe(class = "formInput",id="add_codigo",placeholder="Digite o código da sua equipe")}}
-              <p class="alerta_registro" id="alert_codigo">
-                {{alerta_codigo}}
-              </p>
-            </div>
-            
+          
+          <div class="div_input"> 
+              {{form.senha(class = "formInput", id="add_senha",minlength="8",  placeholder="Senha")}}
+          </div>
 
-            <div class="div_input">
-              <label class="label" for="senha">Senha</label> 
-              {{form.senha(class = "formInput", id="add_senha",minlength="8",  placeholder="Digite sua senha")}}
-            </div>
-
-            <div class="div_input">
-              <label class="label" for="confirmarSenha">Confirmar Senha</label>
+          <div class="div_input">
               {{form.confirmarSenha(class = "formInput",minlength="8",  placeholder="Confirme sua senha")}} 
-              <p class="alerta_registro" id="alert_senha">
-                {{alerta_senha}}
-              </p>
-            </div>
-            <a class="link" id="link2" href="/registrarlider">Formar Equipe</a>
-            <input class = "btn" type="submit" value="Cadastrar-se">
-          </form>
-        </div>
+          </div>
+
+         
+          <div class="div_link1 min">
+            <a class="link" id="link1" href="/">Já possui conta?</a>
+            <a class="link" id="link2" href="/registrarlider">Forme uma Equipe</a>
+          </div>
+
+          <p class="alerta_registro" id="alert_senha">
+            {{alerta_senha}}
+          </p>
+
+          <p class="alerta_registro" id="alert_codigo">
+            {{alerta_codigo}}
+          </p>
+
+          <p class="alerta_registro" id="alert_email">
+            {{alerta_email}}
+          </p>
+
+          <p class="alerta_registro central_position" id="alerta_erro">
+            {{alerta_erro}}
+          </p>
+          
+          <div class="div_btn_entrar">
+            <input class = "btn" type="submit" value="Cadastrar-se">  
+          </div>
+
+          
+      </form>
+    </div>
       
-        <a class="link" id="link1" href="/">Fazer Login</a>
+    
   
-    </section>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{{ url_for('static',filename='js/register_user.js' )}}"></script>
-  </body>
-</html> 
+  </section>
+</div>
+{% endblock %}

@@ -14,7 +14,6 @@
     max-width: 250px;
 }
 
-
 #sidebar {
     min-width: 250px;
     max-width: 250px;
@@ -32,20 +31,15 @@ a[data-toggle="collapse"] {
     right: 20px;
     transform: translateY(-50%);
 }
-/* Shrinking the sidebar from 250px to 80px and center aligining its content*/
-#sidebar.active {
-    min-width: 80px;
-    max-width: 80px;
-    text-align: center;
-}
 
-/* Toggling the sidebar header content, hide the big heading [h3] and showing the small heading [strong] and vice versa*/
 #sidebar .sidebar-header strong {
     display: none;
 }
+
 #sidebar.active .sidebar-header h3 {
     display: none;
 }
+
 #sidebar.active .sidebar-header strong {
     display: block;
 }
@@ -53,6 +47,7 @@ a[data-toggle="collapse"] {
 #sidebar ul li a {
     text-align: left;
 }
+
 #sidebarCollapse{
     outline: none;
     padding: 0;
@@ -60,31 +55,29 @@ a[data-toggle="collapse"] {
     margin-left: 1.5em;
     margin-top: 1em;
     z-index: 1030;
-
+    display: none;
+    backdrop-filter: blur(1.5px);
 }
+
 #sidebarCollapse:focus,#sidebarCollapse:active{
     outline: none;
     padding: 0;
 }
 
-
-#sidebar.active ul li a {
-    padding: 20px 10px;
-    text-align: center;
-    font-size: 0.85em;
-}
 .btn-info{
     background:none;
     border: none;
     outline: none;
     box-shadow: none;
 }
+
 .btn-info:focus,.btn:focus, .btn-info:active{
     background:none;
     border: none;
     outline: none;
     box-shadow: none;
 }
+
 #sidebarCollapse:focus, #sidebarCollapse:active {
     outline: none;
     padding: 0;
@@ -96,46 +89,22 @@ a[data-toggle="collapse"] {
     border: none;
     outline: none;
 }
+
 .btn-info:focus{
     background:none;
     border: none;
     outline: none;
 }
 
-#sidebar.active ul li a i {
-    margin-right:  0;
-    display: block;
-    font-size: 1.8em;
-    margin-bottom: 5px;
-}
-
-/* Same dropdown links padding*/
-#sidebar.active ul ul a {
-    padding: 10px !important;
-}
-
-/* Changing the arrow position to bottom center position, 
-   translateX(50%) works with right: 50% 
-   to accurately  center the arrow */
-#sidebar.active .dropdown-toggle::after {
-    top: auto;
-    bottom: 10px;
-    right: 50%;
-    -webkit-transform: translateX(50%);
-    -ms-transform: translateX(50%);
-    transform: translateX(50%);
-}
-
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
+@import "https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap";
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Asap', sans-serif;
     background: #fafafa;
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Asap', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
@@ -147,22 +116,73 @@ a, a:hover, a:focus {
     text-decoration: none;
     transition: all 0.3s;
 }
+
+.cabecalho{
+    display: flex;
+    margin-top: 1em;
+    margin-left: 1em;
+    position: absolute;
+}
+#logo{
+    width: 6em;
+}
+#titulo_cabecalho{
+    align-self: center;
+}
+
 .margin-top{
     margin-top: 5em;
 }
+
 .title{
     margin-bottom: 1em;
 }
-.detalhes-notificao{
 
-}
 #sidebar {
-    /* don't forget to add all the previously mentioned styles here too */
     background: #ffff;
     color: black;
     transition: all 0.3s;
     box-shadow: #00000066 4px 0px 26px 0px;
     position: fixed;
+    z-index: 1;
+}
+
+.aviso_h3{
+    margin-left: 1em;
+}
+
+.btn_apagar{
+    margin-right: 0.5em;
+    cursor: pointer;
+}
+
+.membro{
+    display: flex;
+    border-bottom: solid #959494ab 0.14em;
+    width: 100%;
+    margin-top: 1em;
+}
+
+.nome_membro{
+    display: contents;
+}
+
+.confirmacao{
+    margin-left: -4.7em;
+    display: flex;
+    background: #fafafa;
+}
+
+.margin-bottom{ 
+    margin-bottom: 2em;
+}
+
+.a_confirmar{
+    margin-right: 2em;
+}
+
+.div_confirmacao{
+    display: none;
 }
 
 #sidebar .sidebar-header {
@@ -172,24 +192,25 @@ a, a:hover, a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
-    margin-top: 3em;
+    margin-top: 6em;
 }
 
 #sidebar ul p {
     color: #fff;
     padding: 10px;
 }
+
 .margin-left{
     margin-left: 16em;
 }
 
-#sidebar ul li a {
+#sidebar ul li a{
     padding: 10px;
     font-size: 1.1em;
     display: block;
     padding-left: 1.4em;
-
 }
+
 #sidebar ul li a:hover {
     color: white;
     background: #7386D5;
@@ -199,27 +220,43 @@ a, a:hover, a:focus {
     color: #000;
     background: #ffffff;
 }
+
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
     background: #fbfbfb00;
 }
+
 .div_detalhes{
     display: none;
 }
+
 #view{
     list-style: none;
     padding: 0;
 }
-.aviso_h3{
+
+.aviso_h5{
     margin-top: 0.1em;
     margin-bottom: -0.5em;
 }
+
 .aviso_p{
     margin-top: 0.5em;
     font-size: 90%;
-    color: #a09e9e
+    color: #a09e9e;
+    margin-bottom: 0.5em;
 }
+
+.label_dados{
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.label{
+    display: flex;
+}
+
 .div_aviso{
     padding: 8px 8px 8px 8px;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.27);
@@ -230,6 +267,10 @@ ul ul a {
     border-radius: 7px 7px 7px 7px;
     width: 20em;
     margin-bottom: 1em;
+}
+
+.cursor_pointer{
+    cursor: pointer;
 }
 
 .btn_ver{
@@ -243,13 +284,19 @@ ul ul a {
     border-width: 1px;
     border-style: solid;
     border-radius: 1px 1px 1px 1px;
-    font-family: "Quicksand";
     font-weight: bold;
     font-size: 14px;
     text-align: center;
 }
+
 .svg_voltar{
-    margin-top: -7.7em;
+    margin-left: -0.2em;
+}
+
+
+.h1_notificacoes{
+    margin-top: 1em;
+    font-size: 1.6em;
 }
 
 .btn_azul{
@@ -257,28 +304,302 @@ ul ul a {
     border: none;
     color: white;
     padding: 1em 8em;
-    font-family: 'Asap', bold;
     border-radius: 0.5em;
     margin-top: 2.4em;
     margin-bottom: 1em;
 }
+
+#sub{
+    margin-top: 0em;
+    color: #8f8f8f;
+}
+
+.div_input{
+    margin-bottom: 1em;
+}
+
 .btn_azul:hover{
     background-color: #747dfc;
 }
+
 .btn_azul:focus{
     outline:none;
 }
 
-@media (max-width: 560px) {
-    /* 80px and its content aligned to centre. Pushing it off the screen with the
-       negative left margin
-    */
+.formInputEditarPerfil{
+    border: none;
+    border-bottom: 0.16em solid;
+    padding: 0.5em 1em;
+    width: 18em;
+    border-color: #DDDDDD;
+    background: none;
+}
+
+.formInputEditarPerfil:focus,.formInputEditarPerfil:hover{
+    outline: none;
+    background-color: none;
+}
+
+.lb1,.lb2{
+    display: block;
+}
+
+#h2_conf{
+    margin-bottom: 0;
+}
+
+.btn_salvar{
+    background-color: #5F6AF8;
+    border: none;
+    color: white;
+    padding: 1em 7.7em;
+    border-radius: 0.5em;
+}
+
+.alerta_registro{
+    color: red;
+    font-size: 0.9em;
+    margin-left: 4em;
+}
+
+#nomedaEquipe{
+        margin-bottom: 1em;
+        padding-left: 0.5em;
+}
+
+
+/* Historico */
+.div_historico{
+    padding: 0.5em;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.27);
+    background: #ffffff;
+    border-color: #ffffff;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 7px 7px 7px 7px;
+    width: 20em;
+    margin-bottom: 1em;
+}
+.datahora,.anilha,.localizacao,.informacoes,.tipoderegistro,.p_dados{
+    margin: 0;
+    color: #212529;
+}
+.especie{
+    margin: 0;
+    font-size: 1.6em;
+    margin-top: 0.6em;
+    color: #212529;
+}
+.informacoesComplementares{
+    display: grid;
+    margin-top: 1.5em;
+    display: none;
+}
+.verMais{
+    color:#ababab;
+    cursor: pointer;
+}
+.btns{
+    background: none;
+    border: none;
+    border-bottom: solid;
+    padding: 0.7em 2em;
+    cursor: pointer;
+}
+.btns:hover{
+    border-bottom: solid 0.3em;
+    font-size: 14px;
+}
+.btn_cancelar{
+    margin-right: 2em;
+}
+.editar_dados{
+    display: none;
+}
+.btn_voltar{
+    margin-left: 16.5em;
+}
+.link_HistoricoEspecifico{
+    color: #ababab;
+    display: block;
+    width: 10em;
+    margin-bottom: 2em;
+}
+.link_HistoricoEspecifico:hover{
+    color: #5F6AF8;
+}
+.pesquisa{
+    display: flex;
+    width: 16em;
+}
+.formInputPesquisa{
+    border: none;
+    border-bottom: 0.16em solid;
+    padding: 0.5em 1em;
+    width: 16em;
+    border-color: #DDDDDD;
+    margin-right: 1em;
+    background: none;
+}
+.formInputPesquisa:focus{
+    outline: none;
+}
+.btn_pesquisa{
+    background-color: #5F6AF8;
+    border: none;
+    border-radius: 0.3em;
+}
+.btn_pesquisa:hover{
+    background-color: #747dfc;
+}
+.btn_pesquisa:focus{
+    outline:none;
+}
+.btns_editar_apagar{
+    display: flex;
+    position: absolute;
+    align-items: flex-end;
+    margin-left: 17.5em;
+}
+.btn_apagar{
+    cursor: pointer;
+}
+.btn_editar{
+    cursor: pointer;
+}
+.confirmarExclusao{
+    display: none;
+    position: absolute;
+    background-color: white;
+    margin: 0;
+    margin-left: -0.5em;
+    padding: 0.7em 1em 0.7em 1em;
+    margin: -0.5em;
+    width: 19.9em;
+}
+/* Final Historico */
+
+.margin-top-min{
+    margin-top: 3.5em;
+}
+#segunda_sessao{
+    display: none;
+}
+.inputDadosTartaruga{
+    padding: 0.5em;
+    border-radius: 0.4em;
+    border-style: solid;
+    border-color: #DDDDDD;
+}
+
+#inputCCC,#inputCCL{
+    width: 8em;
+    margin-right: 1em;
+}
+.ccc_ccl{
+    display: flex;
+}
+#a_novadesova{
+    display: flex;
+    margin-left: 3em;
+}
+#a_voltar{
+    display: flex;
+    margin-left: 7em;
+}
+.h1_titulo{
+    margin-top: 0;
+    margin-bottom: 0.1em;
+}
+.div_titulo{
+    margin-bottom: 3em;
+}
+.data_hora{
+    display: flex;
+}
+#ccc{
+    margin-right: 1em;
+}
+#btn_voltar{
+    display: flex;
+    margin-left: 7em;
+}
+
+#p_info{
+    font-size: 80%;
+}
+#inputHora{
+    width: 6em;
+}
+.div_gerenciartartaruga{
+    margin-top: 1em;
+}
+.div_input_tartaruga{
+    margin-bottom: 0.5em;
+}
+#alerta_erro_historico {
+    margin-left: 1em;
+}
+@media (max-width: 321px) {
+    .cabecalho{
+        display: flex;
+        margin-top: 3.5em;
+        margin-left: 1em;
+    }
+    #alerta_erro_historico{
+        margin-left: 0;
+        text-align: center;
+    }
+    .alerta_registro{
+        margin-left: 0;
+    }
+
+    .central_position{
+        text-align: center;
+    }
+
+    .formInputEditarPerfil {
+        border: none;
+        border-bottom: 0.16em solid;
+        padding: 0.5em 1em;
+        width: 100%;
+        border-color: #DDDDDD;
+        background: none;
+    }
+
+    .h1_notificacoes{
+        margin-top: 1em;
+        font-size: 1.6em;
+    }
+
     .margin-left{
         margin-left: 0;
     }
+
     .btn_ver{
         margin-left:0;
     }
+
+    .btn_salvar{
+        background-color: #5F6AF8;
+        border: none;
+        color: white;
+        padding: 1em 7em;
+        border-radius: 0.5em;
+    }
+
+    .btn_azul {
+        background-color: #5F6AF8;
+        border: none;
+        color: white;
+        padding: 1em 5.7em;
+        border-radius: 0.5em;
+        margin-top: 2.4em;
+        margin-bottom: 1em;
+        text-align: -webkit-center;
+        width: -webkit-fill-available;
+    }
+
     #sidebar.active {
         min-width: 80px;
         max-width: 80px;
@@ -299,22 +620,18 @@ ul ul a {
         /* margin-right: 0; */
     }
 
-
-    /* Reappearing the sidebar on toggle button click */
     #sidebar {
         margin-left: 0; 
         position: fixed;
+        
     }
+
     #sidebarCollapse{
-        text-align: end;
-        width: 100%;
-        margin-left: -1em;
+        margin-left: 1.47em;
+        display: block;
+        backdrop-filter: blur(3px);
     }
 
-
-    /* Toggling the sidebar header content, 
-       hide the big heading [h3] and showing the small heading [strong] and vice versa
-    */
     #sidebar .sidebar-header strong {
         display: none;
     }
@@ -324,8 +641,163 @@ ul ul a {
     #sidebar.active .sidebar-header strong {
         display: block;
     }
+    #sidebar.active div.cabecalho{
+        display:none;
+    }
 
-    /* Downsize the navigation links font size */
+    #sidebar.active ul li a{
+        padding: 20px 10px;
+        font-size: 0.85em;
+    }
+
+    #sidebar.active ul li a i {
+        margin-right:  0;
+        display: block;
+        font-size: 1.8em;
+        margin-bottom: 5px;
+    }
+
+    #sidebar.active ul ul a {
+        padding: 10px !important;
+    }
+
+    .dropdown-toggle::after {
+        bottom: 10px;
+        -webkit-transform: translateX(50%);
+        -ms-transform: translateX(50%);
+        transform: translateX(50%);
+    }
+    .div_historico{
+        width: 17em;
+    }
+    .btns_editar_apagar{
+        margin-left: 14.6em;
+    }
+    #telaprincipal_margins{
+        margin-left: -0.5em
+    }
+    .confirmarExclusao {
+        display: none;
+        position: absolute;
+        background-color: white;
+        margin: 0;
+        margin-left: -0.5em;
+        padding: 4em 0.5em 4em 0.5em;
+        margin: -0.5em;
+        width: 16.9em;
+    }
+    .btns{
+        padding: 0.7em 1.7em;
+    }
+    
+}
+
+@media (min-width:322px) and (max-width: 560px) {
+    #sidebar.active div.cabecalho{
+        transition-duration: 1s;
+        display:none;
+    }
+    .cabecalho {
+        display: flex;
+        margin-top: 3.5em;
+        margin-left: 1em;
+        position: absolute;
+    }
+    #alerta_erro_historico {
+        margin-left: 1em;
+    }
+    .confirmarExclusao {
+        display: none;
+        position: absolute;
+        background-color: white;
+        margin: 0;
+        margin-left: -0.5em;
+        padding: 2.5em 0.5em 2.5em 0.5em;
+        margin: -0.5em;
+        width: 18.9em;
+    }
+    .alerta_registro{
+        margin-left: 0;
+    }
+
+    .central_position{
+        text-align: center;
+    }
+
+    .formInputEditarPerfil {
+        border: none;
+        border-bottom: 0.16em solid;
+        padding: 0.5em 1em;
+        width: 100%;
+        border-color: #DDDDDD;
+        background: none;
+    }
+
+    .h1_notificacoes{
+        margin-top: 1em;
+        font-size: 1.6em;
+    }
+    
+    .margin-left{
+        margin-left: 0;
+    }
+
+    .btn_ver{
+        margin-left:0;
+    }
+
+    .btn_azul {
+        background-color: #5F6AF8;
+        border: none;
+        color: white;
+        padding: 1em 5.7em;
+        border-radius: 0.5em;
+        margin-top: 2.4em;
+        margin-bottom: 1em;
+        text-align: -webkit-center;
+        width: -webkit-fill-available;
+    }
+    #sidebar.active {
+        min-width: 80px;
+        max-width: 80px;
+        text-align: center;
+        margin-left: -80px !important;
+    }
+
+    .div_aviso {
+        padding: 8px 8px 8px 8px;
+        box-shadow: 2px 4px 10px rgb(0 0 0 / 27%);
+        background: #ffffff;
+        border-color: #ffffff;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 7px 7px 7px 7px;
+        margin-bottom: 1em;
+        width: auto;
+    }
+
+    #sidebar {
+        margin-left: 0; 
+        position: fixed;
+    }
+
+    #sidebarCollapse{
+        margin-left: 1.47em;
+        display: block;
+    }
+
+    #sidebar .sidebar-header strong {
+        display: none;
+    }
+
+    #sidebar.active .sidebar-header h3 {
+        display: none;
+    }
+
+    #sidebar.active .sidebar-header strong {
+        display: block;
+    }
+
     #sidebar.active ul li a {
         padding: 20px 10px;
         font-size: 0.85em;
@@ -338,20 +810,20 @@ ul ul a {
         margin-bottom: 5px;
     }
 
-    /* Adjust the dropdown links padding*/
     #sidebar.active ul ul a {
         padding: 10px !important;
     }
 
-    /* Changing the arrow position to bottom center position, 
-      translateX(50%) works with right: 50% 
-      to accurately  center the arrow */
     .dropdown-toggle::after {
-            /* top: auto; */
         bottom: 10px;
-        /* right: 50%; */
         -webkit-transform: translateX(50%);
         -ms-transform: translateX(50%);
         transform: translateX(50%);
+    }
+    .div_historico{
+        width:19em;
+    }
+    .btns_editar_apagar{
+        margin-left: 16.5em;
     }
 }

@@ -1,0 +1,138 @@
+@import "https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap";
+
+
+body {
+    font-family: 'Asap';
+    background: #fafafa;
+    margin: 0;
+}
+p {
+    font-family: 'Asap';
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+#titulo_inicial{
+    text-align: center;
+}
+#img_tartaruga{
+    width:19em;
+}
+#titulo{
+    margin-top: calc(-4.625rem + -1.5vw);
+    font-size: calc(2.375rem + 2.5vw);
+}
+#subtitulo{
+    margin-top: -1em;
+    font-size: calc(0.675rem + 0.7vw);
+}
+#div_form{
+    text-align: center;
+}
+.formInput{
+    border: none;
+    border-bottom: 0.16em solid;
+    padding: 0.5em 1em;
+    width: 18em;
+    border-color: #DDDDDD;
+    background: none;
+    margin-top: 0.7em;
+}
+.formInput:focus,.formInput:hover{
+    outline: none;
+    background-color: none;
+}
+.div_link1{
+    margin-top: 1em;
+}
+#link1{
+    margin-right: 3em;
+}
+#link1:hover,#link2:hover{
+    color:#5F6AF8;
+}
+.div_btn_entrar{
+    margin-top: 1em;
+}
+.btn{
+    background-color: #5F6AF8;
+    border: none;
+    color: white;
+    padding: 1em 7.7em;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+}
+#alerta_erro{
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: red;
+}
+.cabecalho{
+    display: flex;
+}
+#logo{
+    width: 6em;
+}
+#titulo_cabecalho{
+    align-self: center;
+}
+#recuperar_senha{
+    text-align: center;
+}
+.margin-top-min{
+    margin-top: 1em;
+}
+.p_recuperarsenha{
+    font-size: calc(0.675rem + 0.7vw);
+}
+.h1_titulo{
+    margin-top: 0.7em;
+}
+.margin_top_plus{
+    margin-top: 3em;
+}
+@media (max-width: 321px) {
+    #titulo {
+        margin-top: -1.6em;
+        font-size: calc(3.375rem + 2.5vw);
+    }
+    #subtitulo {
+        margin-top: -1.5em;
+        /* font-size: calc(2.375rem + 2.5vw); */
+        font-size: calc(0.89rem + 0.7vw);
+    }
+    .formInput {
+        border: none;
+        border-bottom: 0.16em solid;
+        padding: 0.5em 1em;
+        width:-webkit-fill-available;
+        border-color: #DDDDDD;
+        background: none;
+    }
+    .btn{
+        width: -webkit-fill-available;
+        padding: 1em 1em;
+    }
+    .min {
+        margin-top: 1em;
+        font-size: 0.91em;
+    }
+}
+
+@media (min-width:322px) and (max-width: 560px) {
+    #titulo {
+        margin-top: -1.6em;
+        font-size: calc(3.375rem + 2.5vw);
+    }
+    #subtitulo {
+        margin-top: -1.5em;
+        /* font-size: calc(2.375rem + 2.5vw); */
+        font-size: calc(0.89rem + 0.7vw);
+    }
+}

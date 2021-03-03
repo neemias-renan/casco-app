@@ -4,23 +4,60 @@
 <div class="container margin-top">
     <section>
         <div>
-            <h1>Nome da Equipe</h1>
-            <input type="text" name="novoNomedaEquipe" id="nomedaEquipe" value="{{equipe_nome}}" placeholder="Adicione o nome da Equipe">
-    
-    
+            <h3>Nome da Equipe</h3>
+            <form action="" method="POST">
+                <input type="text" class="formInputEditarPerfil" name="novoNomedaEquipe" id="nomedaEquipe" value="{{equipe_nome}}" minlength="1" placeholder="Adicione o nome da Equipe">
+                   
+                <div class = "central_position margin-bottom">
+                    <button class="btn_salvar" type="submit">Salvar</button>
+                </div>
+            </form>
+        
             <h3>Lider</h3>
             <p>{{lider_nome}}</p>
-    
+        
             <h3>Pesquisadores</h3>
-            <ul id="view">  
-                {% for membros in membros %}
-                    <li class="">
-                        <div class="">
-                            <p class="aviso_h3">{{membros.nome}}</p>       
-                        </div> 
-                    </li>
-                {% endfor %}
-            </ul>
+                <ul id="view">  
+                        {% for membros in membros %}
+                            <li class="">
+                                <div class="membro">
+                                    <div class="nome_membro" id="div_nomemembro{{membros.id}}">
+                                        <a onclick="apagar(div_confirmacao{{membros.id}})">
+                                            <div class="btn_apagar">
+                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0)">
+                                                    <path d="M2.25 5.40002H3.75H15.75" stroke="#868686" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M6 5.40002V3.90002C6 3.5022 6.15804 3.12067 6.43934 2.83936C6.72064 2.55806 7.10218 2.40002 7.5 2.40002H10.5C10.8978 2.40002 11.2794 2.55806 11.5607 2.83936C11.842 3.12067 12 3.5022 12 3.90002V5.40002M14.25 5.40002V15.9C14.25 16.2978 14.092 16.6794 13.8107 16.9607C13.5294 17.242 13.1478 17.4 12.75 17.4H5.25C4.85218 17.4 4.47064 17.242 4.18934 16.9607C3.90804 16.6794 3.75 16.2978 3.75 15.9V5.40002H14.25Z" stroke="#868686" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M7.5 9.15002V13.65" stroke="#868686" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M10.5 9.15002V13.65" stroke="#868686" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </g>
+                                                    <defs>
+                                                    <clipPath id="clip0">
+                                                    <rect width="18" height="18" fill="white"/>
+                                                    </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                        </a>  
+                                        <p class="aviso_h3">{{membros.nome}}</p>
+                                    </div>
+
+                                    <div class="div_confirmacao" id="div_confirmacao{{membros.id}}">
+                                        <div class="confirmacao">
+                                        <p>
+                                            <a class="a_confirmar cursor_pointer" href="/apagar_user/{{membros.id}}">Confirmar</a>
+                                        </p> 
+                                        <p>
+                                            <a class="cursor_pointer" onclick="cancelar(div_confirmacao{{membros.id}})">Cancelar</a>
+                                        </p>
+                                            
+                                        </div>
+                                    </div>
+                                </div> 
+                            </li>
+                        {% endfor %}
+                </ul>
+            
         </div> 
     </section>
 </div>

@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Casco</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/geral.css' )}}"/>
+{% extends 'baseInicio.html' %}
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
+{% block content %}
+<div class="container margin-top">
     <section id = "pagina_login">      
       <div id="titulo_inicial">
-        <image id="img_Tartaruga" src="{{ url_for('static',filename='images/tartaruga.png' )}}"><br/>
+        <image id="img_tartaruga" src="{{ url_for('static',filename='images/tartaruga.png' )}}"><br/>
         <h1 id="titulo">Casco</h1>
         <p id="subtitulo">Conservação de Tartarugas Marinhas</p>
       </div>
@@ -24,26 +15,29 @@
 
           
           <div class="div_input">
-            <label class="label" for="email">Email</label>
-            {{form.email(class = "formInputEmail", id="add_email", placeholder="Digite seu email")}}
-            <p class="alerta_registro" id="alert_erro">
-              {{alerta_erro}}
-            </p>
+            {{form.email(class = "formInput", id="add_email", placeholder="Email") }}
           </div>
 
           <div class="div_input">
-            <label class="label" for="senha">Senha</label> 
-            {{form.senha(class = "formInputSenha", id="add_senha",  placeholder="Digite sua senha")}}
+            {{form.senha(class = "formInput", id="add_senha",  placeholder="Senha")}}
           </div>
           
-          <a class="link" id="link1" href="/recuperarsenha">Esqueceu a senha?</a>        
-          <input class = "btn" type="submit" value="Entrar">
+          <div class="div_link1 margin_top_plus">
+            <a class="link" id="link1" href="/recuperarsenha">Esqueceu a senha?</a>
+            <a class="link" id="link2" href="/registrarpesquisador">Criar conta</a>
+          </div>
+          
+          <p class="alerta_registro central_position" id="alerta_erro">
+            {{alerta_erro}}
+          </p>
+          
+          <div class="div_btn_entrar">
+            <input class = "btn" type="submit" value="Entrar">  
+          </div>
         </form>
       </div>        
       
-      <a class="link" id="link2" href="/registrarpesquisador">Inscrever-se</a>
+      
     </section>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{{ url_for('static',filename='js/register_user.js' )}}"></script>
-  </body>
-</html> 
+  </div>
+{% endblock %}
