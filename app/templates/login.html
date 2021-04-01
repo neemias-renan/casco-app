@@ -1,12 +1,10 @@
 {% extends 'baseInicio.html' %}
 
 {% block content %}
-<div class="container margin-top">
+<div class="container margin_top_plus">
     <section id = "pagina_login">      
       <div id="titulo_inicial">
-        <image id="img_tartaruga" src="{{ url_for('static',filename='images/tartaruga.png' )}}"><br/>
-        <h1 id="titulo">Casco</h1>
-        <p id="subtitulo">Conservação de Tartarugas Marinhas</p>
+        <image id="img_tartaruga" src="{{ url_for('static',filename='images/logo.svg' )}}">
       </div>
 
       <div id="div_form">
@@ -18,7 +16,7 @@
             {{form.email(class = "formInput", id="add_email", placeholder="Email") }}
           </div>
 
-          <div class="div_input">
+          <div class="div_input margin-top-min">
             {{form.senha(class = "formInput", id="add_senha",  placeholder="Senha")}}
           </div>
           
@@ -35,6 +33,10 @@
             <input class = "btn" type="submit" value="Entrar">  
           </div>
         </form>
+
+        <div>
+          <a class="link" id="link3" href="/sobre">Conheça o Projeto Casco</a>
+        </div>
       </div>        
       
       

@@ -13,30 +13,30 @@
         {{ form.csrf_token }}
         {{ equipeform.csrf_token }}
           <h2 class="h1_titulo">Monte sua Equipe.</h2>
-          <div class="div_input">
-              {{form.nome(class = "formInput", placeholder="Nome")}}
+          <div class="div_input margin-top-min">
+              {{form.nome(class = "formInput", placeholder="Seu Nome")}}
           </div>
 
-          <div class="div_input">
-              {{form.email(class = "formInput", id="add_email", placeholder="Email")}}
+          <div class="div_input margin-top-min">
+              {{form.email(class = "formInput", id="add_email", placeholder="Seu Email")}}
           </div>
 
-          <div class="div_input">
-            {{equipeform.nomedaequipe(class = "formInput", id="add_nomedaequipe", placeholder="Nome da Equipe")}}
+          <div class="div_input margin-top-min">
+            {{equipeform.nomedaequipe(class = "formInput", id="add_nomedaequipe", placeholder="Nome da Nova Equipe")}}
           </div>
 
           
-          <div class="div_input"> 
-              {{form.senha(class = "formInput", id="add_senha",minlength="8",  placeholder="Senha")}}
+          <div class="div_input margin-top-min"> 
+              {{form.senha(class = "formInput", id="add_senha",minlength="8",  placeholder="Sua Senha")}}
           </div>
 
-          <div class="div_input">
-              {{form.confirmarSenha(class = "formInput",minlength="8",  placeholder="Confirme sua senha")}} 
+          <div class="div_input margin-top-min">
+              {{form.confirmarSenha(class = "formInput",minlength="8",  placeholder="Confirme sua Senha")}} 
           </div>
 
          
           <div class="div_link1 min">
-            <a class="link" id="link" href="/">Voltar ao Inicio</a>
+            <a class="link" id="link" href="/registrarpesquisador">Voltar</a>
           </div>
 
           <p class="alerta_registro" id="alert_senha">

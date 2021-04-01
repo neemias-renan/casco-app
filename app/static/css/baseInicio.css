@@ -49,12 +49,12 @@ a, a:hover, a:focus {
     background-color: none;
 }
 .div_link1{
-    margin-top: 1em;
+    margin-top: 2em;
 }
 #link1{
     margin-right: 3em;
 }
-#link1:hover,#link2:hover{
+#link1:hover,#link2:hover,#link3:hover{
     color:#5F6AF8;
 }
 .div_btn_entrar{
@@ -73,8 +73,15 @@ a, a:hover, a:focus {
     margin-bottom: 0;
     color: red;
 }
+.text_justify{
+    text-align: justify;
+}
+.display_flex{
+    display: flex;
+}
 .cabecalho{
     display: flex;
+    margin-top: 1em;
 }
 #logo{
     width: 6em;
@@ -93,6 +100,9 @@ a, a:hover, a:focus {
 }
 .h1_titulo{
     margin-top: 0.7em;
+}
+.margin_bottom_plus{
+    margin-bottom: 9em;
 }
 .margin_top_plus{
     margin-top: 3em;

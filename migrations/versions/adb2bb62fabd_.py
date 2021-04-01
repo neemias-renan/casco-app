@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: b0dd1d5a99da
+Revision ID: adb2bb62fabd
 Revises: 
-Create Date: 2021-02-26 02:20:38.513276
+Create Date: 2021-03-26 07:49:28.171176
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b0dd1d5a99da'
+revision = 'adb2bb62fabd'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,8 +23,7 @@ def upgrade():
     sa.Column('nomedaequipe', sa.String(), nullable=True),
     sa.Column('codigodaequipe', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('codigodaequipe'),
-    sa.UniqueConstraint('nomedaequipe')
+    sa.UniqueConstraint('codigodaequipe')
     )
     op.create_table('novas_desovas',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -43,7 +42,6 @@ def upgrade():
     sa.Column('informacoes', sa.Text(), nullable=True),
     sa.Column('especie', sa.String(), nullable=True),
     sa.Column('tipo_de_registro', sa.String(), nullable=True),
-    sa.Column('monitoramento', sa.String(length=3), nullable=True),
     sa.Column('sexo', sa.String(length=2), nullable=True),
     sa.Column('ccc', sa.String(length=5), nullable=True),
     sa.Column('lcc', sa.String(length=5), nullable=True),

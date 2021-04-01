@@ -53,7 +53,7 @@ class User(db.Model):
 class Equipe(db.Model):
     __tablename__ = "equipes"
     id = db.Column(db.Integer, primary_key = True)
-    nomedaequipe = db.Column(db.String, unique = True)
+    nomedaequipe = db.Column(db.String)
     codigodaequipe = db.Column(db.String, unique = True)
     # users = db.relationship("User",backref=db.backref("equipe",lazy=True))
     

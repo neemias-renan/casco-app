@@ -46,6 +46,9 @@ def inicio():
     # **********************************************
     a = ''
     d = ''
+    variavel1 = current_user.nome
+    variavel2 = variavel1.split(" ")
+    nome = variavel2[0]
     id_equipe = current_user.equipe_id
     nome_equipe = Equipe.query.filter_by(id = id_equipe).first()
     if nome_equipe == None:
@@ -72,7 +75,7 @@ def inicio():
     alertas2 = Nova_Desova.query.filter_by(datadoalerta = diaatual).all()
     a = alertas
     d = alertas2
-    return render_template('inicio.html',a = a, d = d,equipe = equipe,codigo=codigo)
+    return render_template('inicio.html',a = a, d = d,equipe = equipe,codigo=codigo, nome = nome)
 
 
 @app.route("/editarperfil",methods=["GET","POST"])
@@ -251,7 +254,6 @@ def novaeclosao():
 
 
 @app.route("/sobre")
-@login_required
 def sobre():
     return render_template("sobre.html")
 
@@ -358,13 +360,10 @@ def apagar_user(id):
     db.session.commit()
     return redirect(url_for('gerenciarequipe')) 
 
-@app.route("/teste/<info>")
-@app.route("/teste",defaults = {"info":None})
-@login_required
-def teste(info):
-    # print('%02d' % 19)
-    
-    # i = Tartaruga.query.filter_by(id="1").first()
-    # db.session.delete(i)
-    db.session.commit()
-    return "ok"
+@app.errorhandler(404)
+def not_found_error(error):
+    return  redirect(url_for('index')), 404
+
+@lm.unauthorized_handler
+def unauthorized():
+    return redirect(url_for('index'))
