@@ -25,7 +25,8 @@
                 {% for t in t %}
                     <li class="li">
                         <div class="div_historico">
-                            <div class="btns_editar_apagar">
+                            {% if usuario == 'lider' %}
+                                <div class="btns_editar_apagar">
                                 <a onclick="apagar(confirmarExclusao{{t.id}})">
                                     <div class="btn_apagar">
                                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +44,8 @@
                                         </svg>
                                     </div>
                                 </a>
-                            </div>
+                                </div>
+                            {% endif %}
 
                             <div class="confirmarExclusao" id="confirmarExclusao{{t.id}}">
                                 <h1>Apagar do Histórico?</h1>

@@ -133,6 +133,7 @@ def gerenciarequipe():
 def historico():
     tartarugas_dados = ''
     alerta_erro = ''
+    usuario = current_user.tipo
     if request.method == 'POST':
         identificador = request.form['identificador']
         buscar_anilha = Tartaruga.query.filter_by(anilha = identificador).all()
@@ -151,7 +152,7 @@ def historico():
         ordenarTodos2 = sorted(todos,key=attrgetter('data'))
         tartarugas_dados = ordenarTodos2
         print("tá aqui")
-    return render_template('historico.html', t = tartarugas_dados, alerta_erro = alerta_erro)
+    return render_template('historico.html', t = tartarugas_dados, alerta_erro = alerta_erro, usuario = usuario)
 
 
 @app.route("/registrarTartaruga",methods = ["GET","POST"])
