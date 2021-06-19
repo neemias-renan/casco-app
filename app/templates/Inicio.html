@@ -4,7 +4,7 @@
     <div class="container margin-top">
         <section id="inicio-section">
             <div>
-                <h2 class="title">Olá,<b>{{nome}}</b></h2>
+                <h2 class="title">Olá,<b>{{primeiroNome}}</b></h2>
 
                 <div class="div_titulo">    
                     <h2><b>{{equipe}}</b></h2>
@@ -15,22 +15,22 @@
                 <div>
                         <h2><b>Novas Notificações</b></h2>
                         <ul id="view">
-                            {% for a in a %}
+                            {% for alertasdeTartarugas in alertasdeTartarugas %}
                                 <li class="li">
                                     <div class="div_aviso">
                                         <h5 class="aviso_h5">Período de Nascimento</h5>
-                                        <p class="aviso_p">{{a.data}} - {{a.praia}}</p>
-                                        <input class="btn_ver" type="button" value="ver" onclick="btn_abrir(div{{a.id}})">
+                                        <p class="aviso_p">{{alertasdeTartarugas.data}} - {{alertasdeTartarugas.praia}}</p>
+                                        <input class="btn_ver" type="button" value="ver" onclick="btn_abrir(div{{alertasdeTartarugas.id}})">
                                     </div> 
                                 </li>
                             {% endfor %}
             
-                            {% for d in d %}
+                            {% for alertasdeDesova in alertasdeDesova %}
                                 <li class="li">
                                     <div class="div_aviso">
                                         <h5 class="h5">Período de Nascimento</h5>
-                                        <p class="p">{{d.data}} - {{d.praia}}</p>
-                                        <input class="btn_ver" type="button" value="ver" onclick = "btn_abrir(div{{d.id}})">
+                                        <p class="p">{{alertasdeDesova.data}} - {{alertasdeDesova.praia}}</p>
+                                        <input class="btn_ver" type="button" value="ver" onclick = "btn_abrir(div{{alertasdeDesova.id}})">
                                     </div>
                                 </li>
                             {% endfor %}
@@ -41,8 +41,8 @@
 
 
         <section class="visualizar_notificacao">
-            {% for a in a%}
-                    <div id="div{{a.id}}" class="div_detalhes">
+            {% for alertasdeTartarugas in alertasdeTartarugas %}
+                    <div id="div{{alertasdeTartarugas.id}}" class="div_detalhes">
                         <a id="btn_fechar">
                             <svg class="svg_voltar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M28.5 18H7.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -52,17 +52,17 @@
     
                         <h1 class="h1_notificacoes">Que empolgante!<br>Em breve acontecerá uma nova desova.</h1><br>
                         <label class="label">Localização:</label>
-                        <label class="label_dados">{{a.praia}}</label><br><br>
+                        <label class="label_dados">{{alertasdeTartarugas.praia}}</label><br><br>
                         <label class="label">Espécie:</label>
-                        <label class="label_dados">{{a.especie}}</label><br>      
-                        <a class="btn_maps" href="https://www.google.com.br/maps/search/{{a.latitude}},{{a.longitude}}" target="_blank">
+                        <label class="label_dados">{{alertasdeTartarugas.especie}}</label><br>      
+                        <a class="btn_maps" href="https://www.google.com.br/maps/search/{{alertasdeTartarugas.latitude}},{{alertasdeTartarugas.longitude}}" target="_blank">
                             <input class="btn_azul" type="button" value="Ver no Mapa">
                         </a>
                     </div>
             {% endfor%}
     
-            {% for d in d%}
-                    <div id="div{{d.id}}" class="div_detalhes">
+            {% for alertasdeDesova in alertasdeDesova %}
+                    <div id="div{{alertasdeDesova.id}}" class="div_detalhes">
                         <a id="btn_fechar">
                             <svg class="svg_voltar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M28.5 18H7.5" stroke="#5F6AF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -72,10 +72,10 @@
     
                         <h1 class="h1_notificacoes">Que empolgante!<br>Em breve acontecerá uma nova desova.</h1><br>
                         <label class="label">Localização:</label><br>
-                        <label class="label_dados">{{d.praia}}</label><br>
+                        <label class="label_dados">{{alertasdeDesova.praia}}</label><br>
                         <label class="label">Espécie:</label><br>
-                        <label class="label_dados">{{d.especie}}</label><br>      
-                        <a class="btn_maps" href="https://www.google.com.br/maps/search/{{d.latitude}},{{d.longitude}}" target="_blank"><input class="btn_azul" type="button" value="Ver no Mapa"></a>
+                        <label class="label_dados">{{alertasdeDesova.especie}}</label><br>      
+                        <a class="btn_maps" href="https://www.google.com.br/maps/search/{{alertasdeDesova.latitude}},{{alertasdeDesova.longitude}}" target="_blank"><input class="btn_azul" type="button" value="Ver no Mapa"></a>
                     </div>
             {% endfor%}
         </section>
