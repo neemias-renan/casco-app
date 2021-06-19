@@ -1,11 +1,10 @@
 from flask import render_template,redirect,url_for,request
 from flask_login import login_user,logout_user,current_user,login_required
-from app import app, db , lm
+from app import *
 from datetime import date,timedelta
 from app.controllers.functions import *
-
-from app.models.tables import Equipe, User, Tartaruga,Nova_Desova
-from app.models.forms import LoginForm,CadastroLiderForm,CadastroPesquisadorForm, CadastroEquipeForm
+from app.models.tables import *
+from app.models.forms import *
 from operator import itemgetter, attrgetter
 
 import random
@@ -44,6 +43,7 @@ def inicio():
 
     primeiroNome = exibirNomedoUsuario(current_user.nome) 
     nome_equipe = exibirNomedaEquipe(current_user.equipe_id)
+    dataAtual = exibirDatadeHoje()
 
     if nome_equipe == None:
         equipe = ""
@@ -55,8 +55,6 @@ def inicio():
         else:
             equipe = nome_equipe.nomedaequipe
             codigo = "Código de acesso: "+nome_equipe.codigodaequipe
-    # A data atual vai fazer exibir as notificações das desovas
-    dataAtual = exibirDatadeHoje()
 
     # -- Pensar como continuar a exibir esse alerta mesmo depois do dia
     alertasdeTartarugas = Tartaruga.query.filter_by(datadoalerta = dataAtual).all()
@@ -76,17 +74,12 @@ def editarperfil():
         if request.form['senhaAtual'] == user.senha:
             user.senha = request.form["senhaNova"]
             db.session.commit()
-            print("Foi atualizado.")
         elif request.form['senhaAtual'] == '':
             alerta_erro = ""
-            print('está vazio')
         else:
             alerta_erro = "As senhas não coincidem"
-            print('erro')
-        
 
     return render_template('editarperfil.html',alerta_erro = alerta_erro)
-
 
 @app.route("/gerenciarequipe",methods=["GET","POST"])
 @login_required
@@ -95,10 +88,8 @@ def gerenciarequipe():
     equipe_nome = ""
     lider_nome = ""
 
-
     nomedaEquipe = exibirNomedaEquipe(current_user.equipe_id)
     equipe_nome = nomedaEquipe.nomedaequipe
-
     lider_nome = exibirNomedoLiderdaEquipe(current_user.equipe_id)
     todosMembrosdaEquipe = exibirMembrosdaEquipe(current_user.equipe_id)  
 
@@ -109,7 +100,6 @@ def gerenciarequipe():
         nomedaEquipe.nomedaequipe = request.form['novoNomedaEquipe']
         db.session.commit()
         return redirect(url_for('gerenciarequipe'))
-
     return render_template('gerenciarequipe.html',membros = membros, equipe_nome = equipe_nome,lider_nome = lider_nome)
 
 @app.route("/historico", methods = ["GET","POST"])
@@ -121,7 +111,6 @@ def historico():
     if request.method == 'POST':
         identificador = request.form['identificador']
         buscar_anilha = Tartaruga.query.filter_by(anilha = identificador).all()
-
         ordenarAnilhas = sorted(buscar_anilha,key=attrgetter('data'))
         if buscar_anilha == []:
             alerta_erro = "A anilha procurada não foi achada."
@@ -130,14 +119,11 @@ def historico():
             tartarugas_dados = ordenarTodos1
         else:
             tartarugas_dados = ordenarAnilhas
-
     else:
         todos = Tartaruga.query.all()
         ordenarTodos2 = sorted(todos,key=attrgetter('data'))
         tartarugas_dados = ordenarTodos2
-        print("tá aqui")
     return render_template('historico.html', t = tartarugas_dados, alerta_erro = alerta_erro, usuario = usuario)
-
 
 @app.route("/registrarTartaruga",methods = ["GET","POST"])
 @login_required
@@ -161,7 +147,6 @@ def registrarTartaruga():
 
             dataOriginal = realizarCorrecaodeDataOriginal(data)
             datadoFuturoAlerta = realizarCorrecaodeDatadeFuturoAlerta(data)
-    
             tartaruga = Tartaruga(anilha,informacoes,especie,tipo_de_registro,sexo,ccc,lcc,municipio,praia,latitude,longitude,dataOriginal,hora,datadoFuturoAlerta)
 
             db.session.add(tartaruga)
