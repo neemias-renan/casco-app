@@ -1,6 +1,5 @@
 from app import db
-# from sqlalchemy import ForeignKey
-# from sqlalchemy.orm import relationship
+
 from sqlalchemy import Table, Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
@@ -8,8 +7,6 @@ from sqlalchemy.ext.declarative import declarative_base
 
 class User(db.Model):
     __tablename__ = "users"
-
-
     id = db.Column(db.Integer, primary_key = True)
     nome = db.Column(db.String)
     email = db.Column(db.String, unique = True)
@@ -17,9 +14,6 @@ class User(db.Model):
     tipo = db.Column(db.String(11))
     equipe_id = db.Column(db.Integer, db.ForeignKey('equipes.id'))
     equipes = db.relationship("Equipe",backref=db.backref("users",lazy=True))
-
-    
-    # lider / pesquisador
 
     @property
     def is_authenticated(self):
@@ -39,14 +33,11 @@ class User(db.Model):
         self.email = email
         self.senha = senha
         self.tipo = tipo
-       
         if tipo == "pesquisador":
             self.equipes = None
         else:
             self.equipes = equipes
-        
 
-    
     def __repr__(self):
         return "%r,%r" % (self.nome, self.email)
 
@@ -55,21 +46,16 @@ class Equipe(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     nomedaequipe = db.Column(db.String)
     codigodaequipe = db.Column(db.String, unique = True)
-    # users = db.relationship("User",backref=db.backref("equipe",lazy=True))
-    
 
     def __init__(self, nomedaequipe,codigodaequipe):
         self.nomedaequipe = nomedaequipe
         self.codigodaequipe = codigodaequipe
-        
 
-     
     def __repr__(self):
         return "%r" % (self.nomedaequipe)
 
 class Tartaruga(db.Model):
     __tablename__ = "tartarugas"
-
     id = db.Column(db.Integer, primary_key = True)
     anilha = db.Column(db.String)
     informacoes = db.Column(db.Text)
@@ -84,7 +70,6 @@ class Tartaruga(db.Model):
     longitude = db.Column(db.String)
     data = db.Column(db.String)
     hora = db.Column(db.String)
-
     datadoalerta = db.Column(db.String)
 
     def __init__(self, anilha,informacoes,especie,tipo_de_registro, sexo,ccc,lcc,municipio,praia,latitude,longitude,data,hora,datadoalerta):
@@ -115,7 +100,6 @@ class Tartaruga(db.Model):
 
 class Nova_Desova(db.Model):
     __tablename__ = "novas_desovas"
-
     id = db.Column(db.Integer, primary_key = True)
     municipio = db.Column(db.String)
     praia = db.Column(db.String)
